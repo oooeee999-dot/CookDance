@@ -2,13 +2,15 @@
 
 The first Cloudflare deployment is a separate `pages.dev` preview of the existing static site. The production domain stays on GitHub Pages until a later domain cutover is explicitly approved.
 
+Trial URL: https://cookdance.pages.dev/
+
 ## Connect the existing repository
 
 In Cloudflare, choose **Workers & Pages → Create application → Pages → Import an existing Git repository**. Authorize the GitHub integration for **only** `oooeee999-dot/CookDance`, then select that repository.
 
 | Setting | Value |
 | --- | --- |
-| Project name | `cookdance-preview` (or an available variant) |
+| Project name | `cookdance` |
 | Production branch | `main` |
 | Framework preset | Astro |
 | Root directory | Leave empty; the repository root contains `package.json` |

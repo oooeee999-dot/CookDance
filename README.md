@@ -4,6 +4,7 @@ An English editorial website for curious home cooks. Brand line: **Understand Fo
 
 - Website: https://cookdance.com/
 - Repository: https://github.com/oooeee999-dot/CookDance
+- Cloudflare trial: https://cookdance.pages.dev/
 
 Cloudflare Pages trial setup is documented in [CLOUDFLARE-PREVIEW.md](CLOUDFLARE-PREVIEW.md). The trial uses a separate `pages.dev` address; the current production domain stays on GitHub Pages while it is evaluated.
 
