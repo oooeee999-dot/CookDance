@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const sections = {
+  learn: { title: 'Learn', label: 'THE FUNDAMENTALS', intro: 'Build skills that travel with you from one recipe to the next.', description: 'Explore ingredients, techniques, and everyday kitchen decisions with clear, practical explanations.' },
+  recipes: { title: 'Recipes', label: 'COOK SOMETHING GOOD', intro: 'Recipes with a reason behind every step.', description: 'A practical recipe library is in development. Each future recipe will explain the choices that make it work, with testing status stated clearly.' },
+  'taste-lab': { title: 'Taste Lab', label: 'THE WHY BEHIND THE HOW', intro: 'Curiosity is a powerful kitchen tool.', description: 'Explore cooking principles and observations. Original experiments will be clearly identified once they have been conducted and documented.' },
+  kitchen: { title: 'Kitchen', label: 'TOOLS WITH PURPOSE', intro: 'Make more of the tools you use every day.', description: 'Understand what a tool does, how to choose it, and when a simpler option may be enough.' },
+  stories: { title: 'Stories', label: 'FOOD & CULTURE', intro: 'Food has stories worth sharing.', description: 'Thoughtful writing on the people, places, and traditions that shape how we eat. This section is being developed.' },
+};
+
+export function getStaticPaths() { return ['learn', 'recipes', 'taste-lab', 'kitchen', 'stories'].map((section) => ({ params: { section } })); }
+const section = Astro.params.section as keyof typeof sections;
+const data = sections[section];
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).filter((article) => article.data.section === data.title);
+---
+<BaseLayout title={`${data.title} | CookDance`} description={data.description}>
+  <section class="listing-hero container"><div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>{data.title}</span></div><span class="kicker">{data.label}</span><h1>{data.intro}</h1><p>{data.description}</p></section>
+  <section class="listing-content container"><div class="section-heading"><div><span class="kicker">{data.title.toUpperCase()}</span><h2>{articles.length ? 'Explore the collection' : 'More to come'}</h2></div><span class="count-label">{articles.length} {articles.length === 1 ? 'ARTICLE' : 'ARTICLES'}</span></div>{articles.length ? <div class="article-grid">{articles.map((article, index) => <ArticleCard article={article} index={index} />)}</div> : <div class="empty-state"><span class="empty-symbol">✳</span><p>We’re shaping this section with the same care we bring to the kitchen. Explore the guides already on the table.</p><a class="button button-dark" href="/learn">Explore Learn <span aria-hidden="true">↗</span></a></div>}</section>
+</BaseLayout>
