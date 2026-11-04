@@ -5,6 +5,8 @@ An English editorial website for curious home cooks. Brand line: **Understand Fo
 - Website: https://cookdance.com/
 - Repository: https://github.com/oooeee999-dot/CookDance
 
+Cloudflare Pages trial setup is documented in [CLOUDFLARE-PREVIEW.md](CLOUDFLARE-PREVIEW.md). The trial uses a separate `pages.dev` address; the current production domain stays on GitHub Pages while it is evaluated.
+
 ## Update with GitHub Desktop
 
 1. Choose **File → Add local repository** and select `C:\Users\Administrator\Documents\ChatGPT\个人网站建设\CookDance`.

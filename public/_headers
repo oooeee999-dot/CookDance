@@ -1,0 +1,6 @@
+# Keep Cloudflare test URLs out of search results; custom domains are unaffected.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
