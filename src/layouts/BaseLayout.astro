@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { withBase } from '../lib/urls';
 
 interface Props {
   title?: string;
@@ -26,34 +27,34 @@ const nav = [
     <meta name="theme-color" content="#27392e" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:image" content={new URL(withBase(image), Astro.site)} />
     <title>{title}</title>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div class="announcement"><span>Good cooking starts with curiosity.</span><a href="/about">Meet CookDance <span aria-hidden="true">↗</span></a></div>
+    <div class="announcement"><span>Good cooking starts with curiosity.</span><a href={withBase('/about')}>Meet CookDance <span aria-hidden="true">↗</span></a></div>
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="/" aria-label="CookDance home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Cook<span class="brand-light">Dance</span></span></a>
+        <a class="brand" href={withBase('/')} aria-label="CookDance home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Cook<span class="brand-light">Dance</span></span></a>
         <nav class="desktop-nav" aria-label="Main navigation">
-          {nav.map(([label, href]) => <a href={href} aria-current={Astro.url.pathname === href ? 'page' : undefined}>{label}</a>)}
+          {nav.map(([label, href]) => <a href={withBase(href)} aria-current={Astro.url.pathname === withBase(href) ? 'page' : undefined}>{label}</a>)}
         </nav>
-        <a class="header-cta" href="/learn">Start learning <span aria-hidden="true">↗</span></a>
+        <a class="header-cta" href={withBase('/learn')}>Start learning <span aria-hidden="true">↗</span></a>
         <details class="mobile-menu">
           <summary aria-label="Open menu"><span></span><span></span><span></span></summary>
-          <nav aria-label="Mobile navigation">{nav.map(([label, href]) => <a href={href}>{label}<span aria-hidden="true">↗</span></a>)}</nav>
+          <nav aria-label="Mobile navigation">{nav.map(([label, href]) => <a href={withBase(href)}>{label}<span aria-hidden="true">↗</span></a>)}</nav>
         </details>
       </div>
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer">
       <div class="container footer-top">
-        <div><a class="brand footer-brand" href="/">Cook<span class="brand-light">Dance</span></a><p>Understand Food.<br />Enjoy Cooking.</p></div>
-        <div class="footer-links"><div><h3>Explore</h3><a href="/learn">Learn</a><a href="/recipes">Recipes</a><a href="/taste-lab">Taste Lab</a></div><div><h3>More</h3><a href="/kitchen">Kitchen</a><a href="/stories">Stories</a><a href="/about">About</a></div></div>
+        <div><a class="brand footer-brand" href={withBase('/')}>Cook<span class="brand-light">Dance</span></a><p>Understand Food.<br />Enjoy Cooking.</p></div>
+        <div class="footer-links"><div><h3>Explore</h3><a href={withBase('/learn')}>Learn</a><a href={withBase('/recipes')}>Recipes</a><a href={withBase('/taste-lab')}>Taste Lab</a></div><div><h3>More</h3><a href={withBase('/kitchen')}>Kitchen</a><a href={withBase('/stories')}>Stories</a><a href={withBase('/about')}>About</a></div></div>
       </div>
       <div class="container footer-bottom"><span>© {new Date().getFullYear()} CookDance. An editorial preview.</span><span>Made for curious home cooks.</span></div>
     </footer>

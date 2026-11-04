@@ -32,7 +32,7 @@ src/styles/                  Brand design system
 
 The site is static, with no database or account system. A future Shopify store can live on a separate subdomain or be linked from a dedicated section without changing the editorial content model.
 
-The `main` branch runs a build check on every push through GitHub Actions. Hosting can also be connected to the same branch for automatic updates.
+The `main` branch runs checks, builds, and publishes to GitHub Pages on every push through `.github/workflows/pages.yml`. Pull requests run checks and build without publishing. In the repository's **Settings → Pages**, choose **GitHub Actions** as the publishing source. The workflow builds with the repository path prefix, so a `CookDance` repository publishes at `https://<owner>.github.io/CookDance/`. No custom domain or DNS change is included.
 
 Current articles are editorial examples. They do not claim original recipe or experiment testing. The empty Recipes and Stories sections are clearly labeled as in development.
 
