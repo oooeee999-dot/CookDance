@@ -2,6 +2,15 @@
 
 An English editorial website for curious home cooks. Brand line: **Understand Food. Enjoy Cooking.**
 
+- Website: https://oooeee999-dot.github.io/CookDance/
+- Repository: https://github.com/oooeee999-dot/CookDance
+
+## Update with GitHub Desktop
+
+1. Choose **File → Add local repository** and select `C:\Users\Administrator\Documents\ChatGPT\个人网站建设\CookDance`.
+2. After editing files, review the changes, enter a summary, and choose **Commit to main**.
+3. Choose **Push origin**. GitHub Actions checks, builds, and publishes the new site automatically. The repository's **Actions** tab shows the result.
+
 ## Local preview (Windows PowerShell)
 
 ```powershell
@@ -28,7 +37,7 @@ src/styles/                  Brand design system
 
 - **Stage 1 complete:** visual system, responsive homepage and navigation, section entry pages, and article detail template.
 - **Stage 2 planned:** recipe content model and template, category and tag browsing, client-side search, and expanded editorial library.
-- **Stage 3 planned:** final responsive audit, SEO and performance work, and GitHub-connected deployment configuration. Publishing to `CookDance.com` and DNS changes require explicit approval.
+- **Stage 3 remaining:** final responsive audit, SEO and performance work. GitHub Pages automatic deployment is configured. Publishing to `CookDance.com` and DNS changes require explicit approval.
 
 The site is static, with no database or account system. A future Shopify store can live on a separate subdomain or be linked from a dedicated section without changing the editorial content model.
 
