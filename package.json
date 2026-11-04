@@ -10,8 +10,9 @@
     "check": "astro check"
   },
   "dependencies": {
-    "astro": "latest",
-    "@astrojs/mdx": "latest"
+    "@astrojs/mdx": "latest",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "latest"
   },
   "devDependencies": {
     "@astrojs/check": "latest",

@@ -27,6 +27,7 @@ const nav = [
     <meta name="theme-color" content="#27392e" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -41,7 +42,7 @@ const nav = [
       <div class="container header-inner">
         <a class="brand" href={withBase('/')} aria-label="CookDance home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Cook<span class="brand-light">Dance</span></span></a>
         <nav class="desktop-nav" aria-label="Main navigation">
-          {nav.map(([label, href]) => <a href={withBase(href)} aria-current={Astro.url.pathname === withBase(href) ? 'page' : undefined}>{label}</a>)}
+          {nav.map(([label, href]) => <a href={withBase(href)} aria-current={Astro.url.pathname.replace(/\/$/, '') === withBase(href).replace(/\/$/, '') ? 'page' : undefined}>{label}</a>)}
         </nav>
         <a class="header-cta" href={withBase('/learn')}>Start learning <span aria-hidden="true">↗</span></a>
         <details class="mobile-menu">
