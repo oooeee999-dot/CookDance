@@ -1,0 +1,14 @@
+---
+import PlatformLayout from '../../layouts/PlatformLayout.astro';
+import PlatformPin from '../../components/PlatformPin.astro';
+import { stories } from '../../demo/content';
+import { ArrowLeft, Bookmark } from '@lucide/astro';
+---
+<PlatformLayout wall>
+  <h1 class="p-sr-only">CookDance — discover a world of food</h1>
+  <section class="p-wall-wrap" data-home aria-label="Discover food and stories">
+    <div class="p-collection-state" data-collection-state hidden><a class="p-icon" href="./" aria-label="Back to all images"><ArrowLeft size={22} /></a><h2>Saved for a little later.</h2></div>
+    <div class="p-photo-wall" data-story-grid>{stories.map((story, index) => <PlatformPin story={story} index={index} />)}</div>
+    <div class="p-empty" data-empty hidden><Bookmark size={28} stroke-width={1.2} /><h2>Keep a little inspiration.</h2><p>Save an image to come back to its story.<br />Your collection stays in this browser.</p><a href="./">Explore the images</a></div>
+  </section>
+</PlatformLayout>

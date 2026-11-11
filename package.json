@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/mdx": "latest",
     "@astrojs/sitemap": "^3.7.4",
+    "@lucide/astro": "^1.72.0",
     "astro": "latest"
   },
   "devDependencies": {

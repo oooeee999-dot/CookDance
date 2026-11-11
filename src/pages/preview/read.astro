@@ -1,0 +1,19 @@
+---
+import PlatformLayout from '../../layouts/PlatformLayout.astro';
+import PlatformPin from '../../components/PlatformPin.astro';
+import { ArrowLeft, Bookmark, ArrowUpRight } from '@lucide/astro';
+import { stories, demoHref, readingTime, bodyParts } from '../../demo/content';
+import { withBase } from '../../lib/urls';
+const story = stories[0];
+---
+<PlatformLayout title="A good read">
+  <div class="p-reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <article class="p-reader p-container" data-reader>
+    <div class="p-reader-crumb"><a href={demoHref()}><ArrowLeft size={14} />Discover</a><span>/</span><a href={demoHref('?topic=Learn#library')} data-reader-section>Learn</a><span>/</span><span data-reader-category>{story.category}</span></div>
+    <header class="p-reader-header"><span class="p-eyebrow" data-reader-kicker>{story.section} / {story.category}</span><h1 data-reader-title>{story.title}</h1><p data-reader-description>{story.description}</p><div class="p-reader-byline"><span class="p-author-mark">CD</span><div><strong>CookDance Editorial</strong><span>For curious home cooks <i>·</i> <span data-reader-time>{readingTime(story.body)} min read</span></span></div><button class="p-save-story p-icon-label" data-reader-save data-save={story.id} aria-pressed="false"><Bookmark size={17} /><span>Save story</span></button></div></header>
+    <figure class="p-reader-photo"><img src={withBase(story.image)} alt={story.imageAlt} width="1500" height="1000" data-reader-image /><figcaption data-photo-caption>Food photography for illustration; not a record of recipe testing.</figcaption></figure>
+    <div class="p-reader-body"><aside class="p-reader-aside"><span class="p-eyebrow">IN THIS STORY</span><nav aria-label="Table of contents" data-reader-toc>{bodyParts(story.body).filter(part => part.type === 'heading').map(part => <a href={`#${part.id}`}>{part.text}</a>)}</nav><div class="p-aside-philosophy">Cooking is<br /><em>a philosophy.</em><span>THE COOKDANCE WAY</span></div></aside><div><div class="p-prose" data-reader-body>{bodyParts(story.body).map(part => part.type === 'heading' ? <h2 id={part.id}>{part.text}</h2> : <p>{part.text}</p>)}</div><div class="p-editorial-note"><span class="p-eyebrow">A NOTE ON THIS PREVIEW</span><p>Sample editorial content for exploring the new CookDance experience. No original recipe, experiment, or hands-on product testing is claimed.</p></div><a class="p-read-link" href={demoHref()}>Find your next good read <ArrowUpRight size={16} /></a></div></div>
+  </article>
+  <section class="p-container p-reader-channels" data-reader-channels hidden></section>
+  <section class="p-reader-related p-container"><div class="p-section-heading"><div><span class="p-eyebrow">ONE GOOD IDEA LEADS TO ANOTHER</span><h2>A little more to explore.</h2></div></div><div class="p-related-photos" data-related-grid>{stories.slice(1, 5).map(item => <PlatformPin story={item} />)}</div></section>
+</PlatformLayout>

@@ -1,65 +1,123 @@
 # CookDance
 
-An English editorial website for curious home cooks. Brand line: **Understand Food. Enjoy Cooking.**
+**你的 Cook，大家的 Taste。**
 
-- Website: https://cookdance.com/
-- Repository: https://github.com/oooeee999-dot/CookDance
-- Cloudflare trial: https://cookdance.pages.dev/
+一个从美食图片出发、逐步成长为全球美食内容平台的项目。首页让人发现美食；点进图片以后，再阅读故事、烹饪知识与重要说明。
 
-Cloudflare Pages trial setup is documented in [CLOUDFLARE-PREVIEW.md](CLOUDFLARE-PREVIEW.md). The trial uses a separate `pages.dev` address; the current production domain stays on GitHub Pages while it is evaluated.
+| 想做什么 | 直接打开 |
+| --- | --- |
+| 看新版图片平台 | [cookdance.com/preview/](https://cookdance.com/preview/) |
+| 试内容工作台 | [cookdance.com/preview/studio/](https://cookdance.com/preview/studio/) |
+| 看现有正式首页 | [cookdance.com](https://cookdance.com/) |
+| 学习更新内容、图片与链接 | [日常使用与更新](CONTENT-GUIDE.md) |
+| 查看托管、域名与部署设置 | [部署说明](DEPLOYMENT.md) |
 
-## Update with GitHub Desktop
+> **当前状态：新版发布在 `/preview/`，还没有替换正式首页。演示工作台只修改当前浏览器，不会直接更新所有人看到的网站。**
 
-1. Choose **File → Add local repository** and select `C:\Users\Administrator\Documents\ChatGPT\个人网站建设\CookDance`.
-2. After editing files, review the changes, enter a summary, and choose **Commit to main**.
-3. Choose **Push origin**. GitHub Actions checks, builds, and publishes the new site automatically. The repository's **Actions** tab shows the result.
+## 我们为什么做 CookDance
 
-## Local preview (Windows PowerShell)
+最初的思想是：**“Cook 其实是一种哲学。”**
+
+我们进一步讨论了 **“Cook 验证着 Taste”** 和 **“你的 Cook，大家的 Taste”**：烹饪是一种实践与表达，品尝带来交流与回应。CookDance 希望让不同语言、背景与文化的人，通过美食彼此发现。
+
+- **首页先用图片邀请人进来。** 不先要求读懂一段品牌介绍，也不把所有分类塞进导航。
+- **点进去以后，再把事情讲清楚。** 名称、故事、食材、做法、来源和重要说明属于详情内容。
+- **品味来自取舍。** 简单的 Logo、克制的界面、清楚的阅读体验，让内容逐步生长。
+- **内容要诚实。** AI 演示图明确说明；未经实际测试的食谱、烹饪实验或产品，不写成真实验证成果。
+- **商业模块跟随内容。** 购买渠道先放在相关详情里，后续可以接入 Shopify 等店铺。
+
+| 表达 | 用途与状态 |
+| --- | --- |
+| **Cooking is a philosophy.** | 最初的品牌哲学：“Cook 其实是一种哲学。” |
+| **你的 Cook，大家的 Taste。** | 现在讨论的平台使命 |
+| **Your cooking. A world of taste.** | 新版 Demo 正在使用的候选英文 slogan，仍可继续推敲 |
+| Understand Food. Enjoy Cooking. | 早期品牌主张，现有正式页面仍保留 |
+
+## 以后如何更新：看这条流程
+
+```text
+修改项目文件 → 本地检查 → Commit to main → Push origin → Cloudflare 自动构建并发布
+```
+
+1. 在 **GitHub Desktop** 选择本目录对应的 **CookDance** 仓库，分支为 `main`。
+2. 编辑项目文件，在本地预览；运行 `npm run check` 和 `npm run build`，确认通过。
+3. 在 Desktop 的 **Changes** 中检查改动，填写说明，然后 **Commit to main**。
+4. 点击 **Push origin**。这一步才把本机提交送到 GitHub。
+5. 等待自动检查与部署完成，再打开网站。GitHub 的 [Actions](https://github.com/oooeee999-dot/CookDance/actions) 看代码检查；Cloudflare 的 `cookdance` 项目看实际部署结果。
+
+**Commit 只是本机保存版本；Push 才上传；Cloudflare 部署成功后，其他人才看到更新。** 不需要每次重传整个网站或重新配置域名。
+
+## 工作台演示和真正发布的区别
+
+| 操作 | 影响范围 |
+| --- | --- |
+| 工作台编辑、保存草稿、发布到本地演示 | 只保存在当前浏览器；不会修改 GitHub，也不会通知 Cloudflare |
+| 工作台导出 JSON | 下载内容备份；目前没有自动导入或发布功能 |
+| 修改代码中的内容并 Commit、Push | 提交到 GitHub，由 Cloudflare 发布给访问者 |
+| 将新版改为正式首页 | 后续单独完成；当前正式首页入口保留 |
+
+工作台可以试新建内容、换封面、草稿、首页首图和购买渠道。图片上传、正式登录、多人编辑、审核和共享发布尚未接入。具体操作见 [CONTENT-GUIDE.md](CONTENT-GUIDE.md)。
+
+## 本地打开项目
+
+当前工作目录：`C:\Users\Administrator\Documents\ChatGPT\个人网站建设\CookDance`。项目使用 Astro、TypeScript、Markdown/MDX，Node 版本见 `.node-version`。
+
+Windows PowerShell：
 
 ```powershell
 cd 'C:\Users\Administrator\Documents\ChatGPT\个人网站建设\CookDance'
-npm install
+npm ci
 npm run dev
 ```
 
-Open the Local URL printed by Astro (normally `http://127.0.0.1:4321/`). For a production build, run `npm run check` and `npm run build`.
+打开 Astro 打印的 Local 地址（通常是 `http://127.0.0.1:4321/preview/`；如果打印的是根地址，在后面加 `preview/`）。`npm ci` 用于首次准备或依赖变化后，平时启动只需 `npm run dev`。
 
-## Structure
+推送前的检查：
 
-```text
-public/images/               Local editorial photography
-src/components/              Reusable content cards
-src/content/articles/        Markdown and MDX articles
-src/content.config.ts        Typed article frontmatter
-src/layouts/                 Shared site shell and SEO metadata
-src/pages/                   Home, sections, About, article details
-src/styles/                  Brand design system
+```powershell
+npm run check
+npm run build
 ```
 
-## Project stages
+## 常用文件：改哪里
 
-- **Stage 1 complete:** visual system, responsive homepage and navigation, section entry pages, and article detail template.
-- **Stage 2 planned:** recipe content model and template, category and tag browsing, client-side search, and expanded editorial library.
-- **Stage 3 remaining:** final responsive audit, SEO and performance work. GitHub Pages automatic deployment and the `cookdance.com` custom domain are configured. DNS is managed in Alibaba Cloud.
+| 要修改的东西 | 文件 / 目录 |
+| --- | --- |
+| 新版的初始内容、封面库、内容顺序 | `src/demo/content.ts` |
+| 新版 Logo 下的 slogan、页脚、页面外壳 | `src/layouts/PlatformLayout.astro` |
+| 新版图片入口组件 | `src/components/PlatformPin.astro` |
+| 新版图片比例 | `coverRatio()`，位于 `src/demo/content.ts` |
+| 新版间距、字体、响应式布局 | `src/styles/platform.css` |
+| 新版首页、详情与工作台 | `src/pages/preview/` |
+| 新版图片文件 | `public/images/platform/` |
+| 现有正式文章（Markdown/MDX） | `src/content/articles/` |
+| 现有正式首页 | `src/pages/index.astro` |
+| GitHub 自动检查 | `.github/workflows/ci.yml` |
 
-The site is static, with no database or account system. A future Shopify store can live on a separate subdomain or be linked from a dedicated section without changing the editorial content model.
+## GitHub、Cloudflare、阿里云各做什么
 
-The `main` branch runs checks, builds, and publishes to GitHub Pages on every push through `.github/workflows/pages.yml`. Pull requests run checks and build without publishing. The publishing source is **GitHub Actions**. The workflow uses `https://cookdance.com` with the root path `/`, so navigation and images work on the custom domain. Keep **Custom domain** set to `cookdance.com` in the repository's **Settings → Pages**. Custom GitHub Actions deployments use that setting and do not require a `CNAME` file.
+| 服务 | 职责 |
+| --- | --- |
+| GitHub | 保存源代码与历史版本；Actions 自动检查，不再重复发布 GitHub Pages |
+| Cloudflare Pages | 读取 `main` 分支，构建并托管网站 |
+| Cloudflare DNS | 管理 `cookdance.com` 与 `www` 的解析、HTTPS 与跳转 |
+| 阿里云 | 保留域名注册与续费 |
 
-Current articles are editorial examples. They do not claim original recipe or experiment testing. The empty Recipes and Stories sections are clearly labeled as in development.
+正式域名已经接入 Cloudflare。`cookdance.pages.dev` 是 Cloudflare 分配的备用访问地址，设置为不收录。旧 GitHub Pages 部署作为历史版本保留，本次未删除或改动其账户设置。详见 [DEPLOYMENT.md](DEPLOYMENT.md)。
 
-## Google Search discovery
+## 当前边界与下一步
 
-- `https://cookdance.com/robots.txt` explicitly allows crawling and advertises the sitemap.
-- `https://cookdance.com/sitemap-index.xml` is generated by Astro's official sitemap integration during every build. It includes published static pages, using the canonical domain and trailing slashes that GitHub Pages serves.
-- Add CookDance to [Google Search Console](https://search.google.com/search-console/), verify ownership with the DNS TXT record or HTML file Google provides for this property, then submit `sitemap-index.xml` in **Sitemaps**. Search Console verification and submission are separate account steps; deploying these files does not complete them.
-- Crawl access and sitemap submission help discovery; Google decides whether and when to index each page.
+目前没有数据库、商城、用户登录、支付、AI 聊天或会员系统。新版仍是可操作的内容平台原型，详情用查询参数选择示例内容，尚未承担正式文章的搜索收录。
 
-## Photography
+下一步把图片内容模型接入正式 Markdown/MDX 与基于 Git 的轻量内容管理，让一次内容发布生成图片首页和独立详情 URL。之后根据实际内容增加食材、地区、技法关联和可选购买模块。
 
-Locally stored photographs are from [Pexels](https://www.pexels.com/license/) and credited here:
+新版页面使用 `noindex, nofollow`，并排除在站点地图外。正式站的 `robots.txt`、站点地图和 Google 验证文件保留；Search Console 是否已完成验证与站点地图提交，需要在账户中确认。
 
-- `hero.jpg`: [Lucie Liz](https://www.pexels.com/photo/overhead-shot-of-ingredients-near-a-chopping-board-7432996/)
-- `prep.jpg`: [Artem Podrez](https://www.pexels.com/photo/a-person-cutting-vegetables-7495765/)
-- `knife.jpg`: [Jonathan Borba](https://www.pexels.com/photo/close-up-shot-of-a-person-slicing-a-vegetable-14590496/)
-- `pasta.jpg`: [Dextar Studio](https://www.pexels.com/photo/delicious-pasta-on-plate-on-table-15813476/)
+## 进一步查看
+
+- [新版 Demo 结构与实现说明](DESIGN-DEMO.md)
+- [设计检查与测试边界](design-qa.md)
+- [生成素材说明](design/platform-demo/ASSETS.md)
+- [真实摄影来源](PHOTOGRAPHY.md)
+
+说明更新于 **2026-11-11**。

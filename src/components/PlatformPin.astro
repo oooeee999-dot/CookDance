@@ -1,0 +1,11 @@
+---
+import { Bookmark } from '@lucide/astro';
+import { storyHref, coverRatio, type Story } from '../demo/content';
+import { withBase } from '../lib/urls';
+interface Props { story: Story; index?: number; }
+const { story, index = 0 } = Astro.props;
+---
+<article class="p-pin" data-story-id={story.id} style={`--photo-ratio:${coverRatio(story.image)}`}>
+  <a class="p-pin-link" href={storyHref(story.id)} aria-label={`Explore: ${story.title}`}><img src={withBase(story.image)} alt={story.imageAlt} width="800" height="1000" loading={index < 4 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} /><h2 class="p-sr-only">{story.title}</h2></a>
+  <button class="p-pin-save" data-save={story.id} aria-label={`Save ${story.title}`} aria-pressed="false"><Bookmark size={20} stroke-width={1.6} /></button>
+</article>

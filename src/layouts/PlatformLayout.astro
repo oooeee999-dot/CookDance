@@ -1,0 +1,32 @@
+---
+import '../styles/platform.css';
+import { Search, Bookmark, X } from '@lucide/astro';
+import { demoHref } from '../demo/content';
+import { withBase } from '../lib/urls';
+interface Props { title?: string; studio?: boolean; wall?: boolean; }
+const { title = 'A world of taste', studio = false, wall = false } = Astro.props;
+---
+<!doctype html>
+<html lang={studio ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" /><meta name="theme-color" content="#27392e" />
+    <meta name="description" content="Discover a world of food through images. Your cooking. A world of taste." />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <title>{title} — CookDance Preview</title>
+  </head>
+  <body class:list={['platform', { 'is-studio': studio, 'is-wall': wall }]}>
+    <a class="p-skip" href="#main">{studio ? '跳到内容' : 'Skip to content'}</a>
+    {!studio && <>
+      <header class="p-header"><div class="p-header-inner">
+        <a class="p-brand" href={demoHref()} aria-label="CookDance home"><img src={withBase('/favicon.svg')} alt="" width="40" height="40" /><span>Cook<span class="p-brand-light">Dance</span><small>Your cooking. A world of taste.</small></span></a>
+        <div class="p-header-actions"><button class="p-icon" data-search-open aria-label="Search food and stories"><Search size={24} stroke-width={1.5} /></button><a class="p-icon p-saved-link" href={demoHref('?view=saved')} aria-label="View saved images"><Bookmark size={24} stroke-width={1.5} /><span class="p-sr-only" data-saved-count>0</span></a></div>
+      </div></header>
+      <dialog class="p-search-dialog" aria-labelledby="search-heading"><div class="p-search-top"><h2 id="search-heading">Follow your curiosity.</h2><button class="p-icon" data-search-close aria-label="Close search"><X size={24} /></button></div><label class="p-search-input"><Search size={22} stroke-width={1.5} /><input type="search" id="global-search" placeholder="An ingredient, a place, a little inspiration…" aria-label="Search images and stories" autocomplete="off" /></label><p class="p-search-caption" data-search-caption>Find a little kitchen inspiration.</p><div class="p-search-results" data-search-results></div></dialog>
+    </>}
+    <main id="main"><slot /></main>
+    {!studio && !wall && <footer class="p-footer"><div><a class="p-wordmark" href={demoHref()}>CookDance</a><p>Your cooking. A world of taste.</p></div><a href={withBase('/about/')}>Cooking is a philosophy.</a></footer>}
+    <div class="p-toast" role="status" aria-live="polite" hidden></div>
+    {!studio && <script>import '../demo/platform';</script>}
+  </body>
+</html>
