@@ -1,0 +1,7 @@
+# Old preview entry points now lead to the public website.
+/preview / 301
+/preview/ / 301
+/preview/read /read/ 301
+/preview/read/ /read/ 301
+/preview/studio /studio/ 301
+/preview/studio/ /studio/ 301

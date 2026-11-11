@@ -3,17 +3,27 @@ import '../styles/platform.css';
 import { Search, Bookmark, X } from '@lucide/astro';
 import { demoHref } from '../demo/content';
 import { withBase } from '../lib/urls';
-interface Props { title?: string; studio?: boolean; wall?: boolean; }
-const { title = 'A world of taste', studio = false, wall = false } = Astro.props;
+interface Props { title?: string; description?: string; image?: string; studio?: boolean; wall?: boolean; }
+const { title = 'Your cooking. A world of taste.', description = 'Discover a world of food through images. Your cooking. A world of taste.', image = '/images/platform/mezze.webp', studio = false, wall = false } = Astro.props;
+const noindex = studio || Astro.url.pathname.includes('/preview/') || Astro.url.pathname.endsWith('/read/');
+const canonical = new URL(Astro.url.pathname.replace('/preview/', '/'), Astro.site);
+const pageTitle = title.includes('CookDance') ? title : `${title} — CookDance`;
 ---
 <!doctype html>
 <html lang={studio ? 'zh-CN' : 'en'}>
   <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, nofollow" /><meta name="theme-color" content="#27392e" />
-    <meta name="description" content="Discover a world of food through images. Your cooking. A world of taste." />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} /><meta name="theme-color" content="#27392e" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(withBase(image), Astro.site)} />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
-    <title>{title} — CookDance Preview</title>
+    <title>{pageTitle}</title>
   </head>
   <body class:list={['platform', { 'is-studio': studio, 'is-wall': wall }]}>
     <a class="p-skip" href="#main">{studio ? '跳到内容' : 'Skip to content'}</a>

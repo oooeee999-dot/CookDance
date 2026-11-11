@@ -41,7 +41,8 @@ function layoutWall(wall: HTMLElement) {
 }
 function renderWall() {
   const wall = $('[data-story-grid]'); if (!wall) return;
-  const visible = published.filter(story => !savedView || saved.includes(story.id)); wall.replaceChildren(...visible.map(pin));
+  const section = $('[data-home]')?.dataset.section;
+  const visible = published.filter(story => (!section || story.section === section) && (!savedView || saved.includes(story.id))); wall.replaceChildren(...visible.map(pin));
   const empty = $('[data-empty]'); if (empty) empty.hidden = visible.length !== 0;
   const collection = $('[data-collection-state]'); if (collection) collection.hidden = !savedView;
   wall.hidden = savedView && !visible.length; layoutWall(wall); syncSaved();
@@ -61,10 +62,10 @@ if ($('[data-reader]')) {
   if (!story) {
     const reader = $('[data-reader]'); if (reader) { const link = el('a', 'p-plain-link', 'Back to the images'); link.href = demoHref(); reader.replaceChildren(el('h1', 'p-not-found', 'This story is not available.'), el('p', '', 'It may still be a draft or the link may have changed.'), link); } $('.p-reader-related')?.remove();
   } else {
-    document.title = `${story.title} — CookDance Preview`;
+    document.title = `${story.title} — CookDance`;
     const set = (selector: string, value: string) => { const node = $(selector); if (node) node.textContent = value; };
     set('[data-reader-title]', story.title); set('[data-reader-description]', story.description); set('[data-reader-kicker]', story.region || `${story.section} / ${story.category}`); set('[data-reader-category]', story.category); set('[data-reader-time]', `${readingTime(story.body)} min read`);
-    const sectionLink = $<HTMLAnchorElement>('[data-reader-section]'); if (sectionLink) { sectionLink.textContent = story.section; sectionLink.href = demoHref(); }
+    const sectionLink = $<HTMLAnchorElement>('[data-reader-section]'); if (sectionLink) { sectionLink.textContent = story.section; sectionLink.href = withBase(`/${story.section.toLowerCase().replace(' ', '-')}/`); }
     const image = $<HTMLImageElement>('[data-reader-image]'); if (image) { image.src = withBase(story.image); image.alt = story.imageAlt; }
     set('[data-photo-caption]', aiImage(story.image) ? 'AI-generated concept photograph. An illustration of an idea, not a record of a prepared or tested dish.' : 'Editorial photography for illustration. Not a record of CookDance recipe testing.');
     const save = $('[data-reader-save]'); if (save) save.dataset.save = story.id;

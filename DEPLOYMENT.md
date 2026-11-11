@@ -13,9 +13,9 @@ Cloudflare Pages：cookdance
 
 | 入口 | 用途 |
 | --- | --- |
-| [cookdance.com](https://cookdance.com/) | 现有正式首页 |
-| [cookdance.com/preview/](https://cookdance.com/preview/) | 新版图片平台演示 |
-| [cookdance.com/preview/studio/](https://cookdance.com/preview/studio/) | 当前浏览器内的工作台原型 |
+| [cookdance.com](https://cookdance.com/) | 图片平台正式首页 |
+| [cookdance.com/read/](https://cookdance.com/read/) | 图片详情（通过 story 参数选择内容） |
+| [cookdance.com/studio/](https://cookdance.com/studio/) | 当前浏览器内的工作台原型 |
 | [cookdance.pages.dev](https://cookdance.pages.dev/) | Cloudflare 分配的备用域名；设置为不收录 |
 
 GitHub 保存代码，Cloudflare Pages 正式托管，Cloudflare 管理 DNS，域名注册和续费仍在阿里云。当前无需数据库、服务器适配器或商城服务。
@@ -73,15 +73,16 @@ Cloudflare 负责根域 CNAME 展平，公网查询可能返回 Cloudflare 的 A
 第一个通配符匹配协议差异，第二个保留路径。例如：
 
 ```text
-http://www.cookdance.com/preview/?view=saved
-→ https://cookdance.com/preview/?view=saved
+http://www.cookdance.com/?view=saved
+→ https://cookdance.com/?view=saved
 ```
 
 ## 搜索收录与验证文件
 
 - 正式站 `public/robots.txt` 允许抓取，并指向 `https://cookdance.com/sitemap-index.xml`。
 - Astro sitemap 集成在构建时生成站点地图。
-- `/preview/` 下的页面设置 `noindex, nofollow`，并从 sitemap 中排除。演示详情使用查询参数，不当作正式可索引文章发布。
+- 正式首页允许索引。旧 `/preview/` 路径、示例详情 `/read/` 与工作台 `/studio/` 使用 `noindex, nofollow`，并从 sitemap 中排除。
+- `public/_redirects` 将旧预览入口跳转到 `/`、`/read/` 与 `/studio/`，遵循 [Cloudflare Pages 的重定向配置](https://developers.cloudflare.com/pages/configuration/redirects/)。
 - `public/_headers` 仅给 Pages 的测试 / 备用域名设置 `X-Robots-Tag: noindex`，不为正式域名根页面设置该标头。
 - **保留 `public/google909bcdc3666f354b.html`。** Astro 会把 public 文件复制到构建输出根目录，供 Google 访问。
 - Search Console 所有权验证、提交 `sitemap-index.xml` 和 Google 实际收录是不同环节；文件上线本身不表示这些账户步骤已经完成。
@@ -90,6 +91,6 @@ http://www.cookdance.com/preview/?view=saved
 
 先检查 Cloudflare 对应提交的构建日志和 GitHub Actions 的错误。修复后再次 Commit、Push；无需重新建立项目、购买服务或重配 DNS。不要把 `node_modules`、`dist`、`.astro`、密钥文件或生成图原始大文件作为发布源码提交。
 
-如果决定让新版替换正式首页，先将其内容模型、独立详情 URL、图片来源、正式 CMS 和 SEO 做好，再迁移 `/`。当前 Push 只增加新版预览入口。
+图片版已替换 `/`，详情、工作台、栏目和关于页也使用新的品牌外壳。下一步继续完善统一内容模型、每篇内容的独立静态 URL、素材来源字段和正式内容管理；这些不影响当前图片首页正常访问。
 
 配置说明更新于 **2026-11-11**。

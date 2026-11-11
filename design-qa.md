@@ -2,6 +2,10 @@
 
 final result: passed
 
+## Root-homepage promotion
+
+The image wall now renders at `/`, with details at `/read/` and the browser-local content studio at `/studio/`. Root-page evidence: `design/platform-demo/root-home-local.jpg`. Browser checks confirmed root-to-story navigation and logo links, new headers on About, the filtered two-item Kitchen collection, a working 20-item studio, and no application errors in the inspected log. The approved composition and assets remain unchanged. Root metadata allows indexing; the query-based illustrative reader and studio remain noindex. Previous preview entry points redirect through `public/_redirects`. The earlier QA record below describes the original preview-stage captures.
+
 Date: 2026-11-11. Scope: local `/preview/` discovery, reading, search, saved collection, and content-studio prototype. No production deployment.
 
 This is the record of the local QA stage, before the subsequent GitHub push. Current online entry points and publishing instructions are maintained in `README.md`, `CONTENT-GUIDE.md`, and `DEPLOYMENT.md`.

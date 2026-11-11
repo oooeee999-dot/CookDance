@@ -6,4 +6,4 @@ Cloudflare 已完成从预览到正式托管的切换；`cookdance.com` 与 `www
 - [查看日常使用与内容更新](CONTENT-GUIDE.md)
 - [查看项目理念和主要入口](README.md)
 
-`cookdance.pages.dev` 仍作为备用访问地址，设置为不收录；新版图片平台在 [cookdance.com/preview/](https://cookdance.com/preview/)。
+`cookdance.pages.dev` 仍作为备用访问地址，设置为不收录；图片平台已用于 [cookdance.com 正式首页](https://cookdance.com/)。

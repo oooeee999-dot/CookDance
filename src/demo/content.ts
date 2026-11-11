@@ -227,8 +227,8 @@ export const initialState: DemoState = {
   home: { featured: stories[0].id, topics: true, kitchen: true },
   channels: [],
 };
-export const storyHref = (id: string) => `${import.meta.env.BASE_URL}preview/read/?story=${encodeURIComponent(id)}`;
-export const demoHref = (path = '') => `${import.meta.env.BASE_URL}preview/${path}`;
+export const storyHref = (id: string) => `${import.meta.env.BASE_URL}read/?story=${encodeURIComponent(id)}`;
+export const demoHref = (path = '') => `${import.meta.env.BASE_URL}${path}`;
 export function readingTime(body: string) { return Math.max(1, Math.ceil(body.split(/\s+/).filter(Boolean).length / 180)); }
 export function bodyParts(body: string) {
   return body.split(/\n\s*\n/).flatMap(block => {

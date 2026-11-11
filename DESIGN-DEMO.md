@@ -1,12 +1,12 @@
 # CookDance · 图片优先的平台 Demo
 
-在线演示：<https://cookdance.com/preview/>
+在线演示：<https://cookdance.com/>
 
-在线工作台原型：<https://cookdance.com/preview/studio/>
+在线工作台原型：<https://cookdance.com/studio/>
 
-本原型随源码提交到 GitHub，通过现有 Cloudflare 流程发布在 `/preview/`。正式首页 `src/pages/index.astro` 保留；这次没有替换旧首页或修改 DNS。
+这一视觉方案已通过现有 Cloudflare 流程接入正式首页 `/`；`src/pages/index.astro` 直接展示图片墙。工作台仍是浏览器原型；本次无需修改 DNS。
 
-本地预览使用相同路径：`http://127.0.0.1:4321/preview/` 与 `/preview/studio/`。日常更新见 [CONTENT-GUIDE.md](CONTENT-GUIDE.md)，当前托管配置见 [DEPLOYMENT.md](DEPLOYMENT.md)。
+本地预览使用相同路径：`http://127.0.0.1:4321/` 与 `/studio/`。旧 `/preview/` 入口会跳转到正式路径。日常更新见 [CONTENT-GUIDE.md](CONTENT-GUIDE.md)，当前托管配置见 [DEPLOYMENT.md](DEPLOYMENT.md)。
 
 ## 这一版的方向
 
@@ -51,12 +51,14 @@ src/demo/platform.ts                图片墙、搜索、收藏、详情展示
 src/demo/studio.ts                  编辑、草稿、发布、首页排序、购买渠道
 src/components/PlatformPin.astro    可复用的图片入口
 src/layouts/PlatformLayout.astro    图片平台外壳
-src/pages/preview/                  本次 Demo 的三个页面
+src/pages/index.astro               正式图片首页
+src/pages/read.astro                图片详情
+src/pages/studio.astro              工作台原型
 src/styles/platform.css            本次 Demo 的视觉系统
 design/platform-demo/              设计图、截图、对照与素材说明
 ```
 
-`/preview/` 页面有 `noindex, nofollow`，并从自动生成的站点地图中排除。详情暂用 query 参数选择内容，仅供本地原型；正式发布时改为每篇内容独立 URL、静态正文、canonical 和相应的结构化数据。
+正式首页允许索引，带 canonical 与社交分享信息。`/preview/`、`/read/`、`/studio/` 使用 `noindex, nofollow` 并排除在站点地图外。图片详情暂用 query 参数选择内容，后续接入独立静态 URL 与正式内容管理。
 
 ## 确定方向后的实施顺序
 

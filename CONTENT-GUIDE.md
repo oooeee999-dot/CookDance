@@ -4,8 +4,8 @@
 
 | 你想做的事 | 这样操作 |
 | --- | --- |
-| 看新版效果 | 打开 [图片首页](https://cookdance.com/preview/)，点图片看详情 |
-| 试内容编辑流程 | 打开 [演示工作台](https://cookdance.com/preview/studio/) |
+| 看新版效果 | 打开 [图片首页](https://cookdance.com/)，点图片看详情 |
+| 试内容编辑流程 | 打开 [演示工作台](https://cookdance.com/studio/) |
 | 更新所有人看到的内容 | 修改项目文件 → 检查 → Commit → Push origin → 等 Cloudflare 发布 |
 
 **工作台里的“发布到本地演示”不是正式网站发布。** 它保存在当前浏览器里；电脑、手机、其他浏览器之间不会共享，也不会写回 GitHub。不要把它当作唯一的内容备份。
@@ -43,7 +43,7 @@
 
 ## 4. 真正更新新版的初始内容
 
-新版内容目前位于 `src/demo/content.ts`，是独立于旧版文章的示例数据。
+图片首页内容目前位于 `src/demo/content.ts`，是独立于 Markdown 文章的示例数据。目录名暂沿用 demo，但这些图片已经显示在正式首页。
 
 - `covers`：封面文件路径、素材名称、图片描述。
 - `photoIdeas`：生成图对应的示例故事；第一个数字是 `covers` 中的图片索引，从 0 开始。
@@ -90,7 +90,7 @@ Explain the idea and name its source or limitations.`,
 
 设置 `draft: true` 不会发布到现有文章列表。检查无误后再改为 `false` 并提交。
 
-**两套内容目前没有自动打通：** 编辑 `src/content/articles/` 更新旧版文章；编辑 `src/demo/content.ts` 更新新版演示。下一阶段将统一内容模型，避免维护两套数据。
+**两套内容目前没有自动打通：** 编辑 `src/content/articles/` 更新 Markdown 文章；编辑 `src/demo/content.ts` 更新正式图片首页的数据。下一阶段将统一内容模型，避免维护两套数据。
 
 ## 6. 购买渠道怎么用
 
@@ -123,7 +123,7 @@ npm run build
 | 看到的情况 | 先检查 |
 | --- | --- |
 | 已 Commit，网站没更新 | Desktop 是否还有 **Push origin** 没点？ |
-| 已 Push，网站还没变化 | Cloudflare 新部署是否完成；是否打开了正确路径？新版是 `/preview/` |
+| 已 Push，网站还没变化 | 确认 Cloudflare 新部署成功，然后刷新 `cookdance.com`；正式首页已是图片版 |
 | 只有一个浏览器显示旧内容 | 可能存在工作台本地覆盖；先导出备份，再恢复演示初始内容，或用未编辑过的浏览器查看 |
 | 工作台改了，手机没有变化 | 这是浏览器本地原型，不是共享后台 |
 | 图片无法显示 | 文件是否存在；路径有没有错误地包含 `public`；是否加入了封面库？ |
