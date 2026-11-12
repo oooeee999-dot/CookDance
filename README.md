@@ -30,7 +30,7 @@
 | --- | --- |
 | **Cooking is a philosophy.** | 最初的品牌哲学：“Cook 其实是一种哲学。” |
 | **你的 Cook，大家的 Taste。** | 现在讨论的平台使命 |
-| **Your cooking. A world of taste.** | 新版 Demo 正在使用的候选英文 slogan，仍可继续推敲 |
+| **Cook with love. Let life dance.** | 当前英文 slogan：“用爱烹饪，让生命起舞。” |
 | Understand Food. Enjoy Cooking. | 早期品牌主张，保留作品牌发展记录 |
 
 ## 以后如何更新：看这条流程
