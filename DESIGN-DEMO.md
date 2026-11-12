@@ -14,7 +14,7 @@
 - 首页只显示 Logo、品牌 slogan、搜索与收藏图标，以及美食图片墙。
 - 首排以竖幅为主，其他图片使用竖幅、方形与横幅的有限组合。桌面 3—5 列，手机两列，图片依照最短列排列。
 - 标题、摘要、地区、分类、阅读时间和正文放在详情页与搜索结果中。首页图片有文字描述和可访问名称。
-- 品牌 slogan：**Cook with love. Let life dance.**（用爱烹饪，让生命起舞。）
+- 品牌 slogan：**Cooking everything. Dancing anywhere.**（烹饪万物，随处起舞。）
 - 品牌哲学：**Cooking is a philosophy.** 最初来自“Cook 其实是一种哲学”。
 
 ## 可以操作的内容
