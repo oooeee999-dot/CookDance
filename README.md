@@ -84,7 +84,8 @@ npm run build
 | 要修改的东西 | 文件 / 目录 |
 | --- | --- |
 | 新版的初始内容、封面库、内容顺序 | `src/demo/content.ts` |
-| 新版 Logo 下的 slogan、页脚、页面外壳 | `src/layouts/PlatformLayout.astro` |
+| 新版 Logo 下的 slogan、页面外壳 | `src/layouts/PlatformLayout.astro` |
+| 页脚的个人理念、邮箱与 WhatsApp | `src/components/SiteFooter.astro` |
 | 新版图片入口组件 | `src/components/PlatformPin.astro` |
 | 新版图片比例 | `coverRatio()`，位于 `src/demo/content.ts` |
 | 新版间距、字体、响应式布局 | `src/styles/platform.css` |

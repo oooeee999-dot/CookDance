@@ -3,6 +3,7 @@ import '../styles/platform.css';
 import { Search, Bookmark, X } from '@lucide/astro';
 import { demoHref } from '../demo/content';
 import { withBase } from '../lib/urls';
+import SiteFooter from '../components/SiteFooter.astro';
 interface Props { title?: string; description?: string; image?: string; studio?: boolean; wall?: boolean; }
 const { title = 'Your cooking. A world of taste.', description = 'Discover a world of food through images. Your cooking. A world of taste.', image = '/images/platform/mezze.webp', studio = false, wall = false } = Astro.props;
 const noindex = studio || Astro.url.pathname.includes('/preview/') || Astro.url.pathname.endsWith('/read/');
@@ -25,7 +26,7 @@ const pageTitle = title.includes('CookDance') ? title : `${title} — CookDance`
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <title>{pageTitle}</title>
   </head>
-  <body class:list={['platform', { 'is-studio': studio, 'is-wall': wall }]}>
+  <body id="top" class:list={['platform', { 'is-studio': studio, 'is-wall': wall }]}>
     <a class="p-skip" href="#main">{studio ? '跳到内容' : 'Skip to content'}</a>
     {!studio && <>
       <header class="p-header"><div class="p-header-inner">
@@ -35,7 +36,7 @@ const pageTitle = title.includes('CookDance') ? title : `${title} — CookDance`
       <dialog class="p-search-dialog" aria-labelledby="search-heading"><div class="p-search-top"><h2 id="search-heading">Follow your curiosity.</h2><button class="p-icon" data-search-close aria-label="Close search"><X size={24} /></button></div><label class="p-search-input"><Search size={22} stroke-width={1.5} /><input type="search" id="global-search" placeholder="An ingredient, a place, a little inspiration…" aria-label="Search images and stories" autocomplete="off" /></label><p class="p-search-caption" data-search-caption>Find a little kitchen inspiration.</p><div class="p-search-results" data-search-results></div></dialog>
     </>}
     <main id="main"><slot /></main>
-    {!studio && !wall && <footer class="p-footer"><div><a class="p-wordmark" href={demoHref()}>CookDance</a><p>Your cooking. A world of taste.</p></div><a href={withBase('/about/')}>Cooking is a philosophy.</a></footer>}
+    {!studio && <SiteFooter />}
     <div class="p-toast" role="status" aria-live="polite" hidden></div>
     {!studio && <script>import '../demo/platform';</script>}
   </body>
