@@ -1,5 +1,7 @@
 # CookDance · 图片优先的平台 Demo
 
+> 本文记录已存档的美食版设计。当前数字创意服务版及验收记录见 [REMODEL-NOTES.md](REMODEL-NOTES.md)，用户已确认发布新版。
+
 在线演示：<https://cookdance.com/>
 
 在线工作台原型：<https://cookdance.com/studio/>

@@ -1,0 +1,22 @@
+---
+import PlatformLayout from '../../layouts/PlatformLayout.astro';
+import PlatformPin from '../../components/PlatformPin.astro';
+import { creativeCards, services, mediaSource, cardRatio, cardColors } from '../../data/creative';
+import { withBase } from '../../lib/urls';
+import { ArrowLeft, ArrowUpRight } from '@lucide/astro';
+export function getStaticPaths() { return creativeCards.map(card => ({params:{id:card.id},props:{card}})); }
+const {card} = Astro.props;
+const image = mediaSource(card.image);
+const colors = cardColors(card);
+const service = services.find(item => item.id === card.service)!;
+---
+<PlatformLayout title={card.title.replace(/\n/g,' ')} description={card.description} image={image}>
+  <article class="c-detail p-container"><a class="c-link" href={withBase('/work/')}><ArrowLeft size={15} />All creative directions</a>
+    <div class="c-detail-grid"><figure><div class="c-detail-visual" data-detail-visual data-has-image={image ? 'true' : 'false'} style={`--photo-ratio:${cardRatio(card)};--card-background:${colors.background};--card-color:${colors.color};`}>
+      {image && <img src={image.startsWith('/') ? withBase(image) : image} alt={card.imageAlt ?? ''} width="900" height="1125" data-detail-media />}
+      <span>{card.title}</span>
+    </div><figcaption>{card.imageNote ?? `${card.kind}. This introduces a creative direction, not a completed client project.`}</figcaption></figure>
+    <div class="c-detail-copy"><span class="p-eyebrow">{card.kind} / {card.category}</span><h1>{card.title}</h1><p>{card.description}</p><h2>A starting point</h2><p>Share the idea, audience, references, and formats you have in mind. We can discuss a suitable direction and agree scope, timing, and budget before production begins.</p><h2>{service.title}</h2><ul>{service.scope.map(item => <li>{item}</li>)}</ul><a class="c-button" href={withBase(`/contact/?service=${service.id}`)}>Discuss your project <ArrowUpRight size={16} /></a>{card.video && <p class="c-disclosure">Video availability and usage will be confirmed in the project brief.</p>}</div></div>
+  </article>
+  <section class="p-container c-related"><div class="c-section-heading"><span class="p-eyebrow">KEEP EXPLORING</span><h2>Another way in.</h2></div><div class="p-related-photos">{creativeCards.filter(item => item.id !== card.id).slice(0,4).map(item => <PlatformPin card={item} />)}</div></section>
+</PlatformLayout>

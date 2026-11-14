@@ -1,5 +1,9 @@
 # CookDance 部署与域名
 
+> 2026-11-14：用户已确认将数字创意服务版发布到现有正式域名，使用 main 分支 Push 触发 Cloudflare 部署。本次未修改 DNS、Cloudflare 项目或域名设置；标准美食版已完整存档。
+
+新版内容入口为 `src/data/creative.ts`；新增 `/work/`、创意方向详情和 `/contact/`。旧美食地址仍保留为历史内容，设置 noindex 并从 sitemap 排除。测试命令增加 `npm test`，Node.js 版本继续使用 `.node-version`。
+
 ## 当前结构
 
 ```text

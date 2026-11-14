@@ -7,6 +7,6 @@ export default defineConfig({
   base: process.env.GITHUB_PAGES_BASE ?? '/',
   output: 'static',
   devToolbar: { enabled: false },
-  integrations: [mdx(), sitemap({ filter: (page) => { const path = new URL(page).pathname; return !path.includes('/preview/') && !path.endsWith('/studio/') && !path.endsWith('/read/'); } })],
+  integrations: [mdx(), sitemap({ filter: (page) => !/\/(preview|studio|read|learn|recipes|taste-lab|kitchen|stories|articles)(\/|$)/.test(new URL(page).pathname) })],
   trailingSlash: 'always',
 });

@@ -1,3 +1,4 @@
+import { layoutWall } from '../lib/masonry';
 import { stories, storyHref, demoHref, readingTime, bodyParts, coverRatio, aiImage, type Story } from './content';
 import { readState, readSaved, writeSaved } from './store';
 import { withBase } from '../lib/urls';
@@ -27,17 +28,6 @@ function syncSaved() {
   const savedLink = $('.p-saved-link'); savedLink?.classList.toggle('has-saved', count > 0);
   if (savedLink) savedLink.setAttribute('aria-label', `View saved images (${count})`);
   document.querySelectorAll('[data-saved-count]').forEach(node => { node.textContent = String(count); });
-}
-function layoutWall(wall: HTMLElement) {
-  const width = wall.clientWidth; const columns = Number(getComputedStyle(wall).getPropertyValue('--columns')) || 4; const gap = Number(getComputedStyle(wall).getPropertyValue('--wall-gap').replace('px', '')) || 18;
-  const tileWidth = (width - gap * (columns - 1)) / columns; const heights = Array<number>(columns).fill(0);
-  wall.classList.add('is-masonry');
-  Array.from(wall.children).forEach(child => {
-    if (!(child instanceof HTMLElement)) return;
-    const column = heights.indexOf(Math.min(...heights)); child.style.width = `${tileWidth}px`; child.style.transform = `translate(${column * (tileWidth + gap)}px, ${heights[column]}px)`;
-    heights[column] += child.getBoundingClientRect().height + gap;
-  });
-  wall.style.height = `${Math.max(0, ...heights) - (wall.children.length ? gap : 0)}px`;
 }
 function renderWall() {
   const wall = $('[data-story-grid]'); if (!wall) return;

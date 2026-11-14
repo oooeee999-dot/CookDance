@@ -1,0 +1,9 @@
+---
+import PlatformLayout from '../../layouts/PlatformLayout.astro';
+import PlatformPin from '../../components/PlatformPin.astro';
+import { creativeCards } from '../../data/creative';
+---
+<PlatformLayout title="Creative directions & visual studies" wall>
+  <header class="c-page-heading c-wide"><span class="p-eyebrow">WORK / EXPLORATIONS</span><h1>Ideas, before<br /><em>they become something.</em></h1><p>Explore service directions and in-house visual studies. This collection does not present completed client commissions.</p></header>
+  <section class="p-wall-wrap" aria-label="Creative directions and visual studies"><div class="p-photo-wall" data-creative-grid>{creativeCards.map((card,index) => <PlatformPin card={card} index={index} />)}</div><div class="p-empty" data-creative-empty hidden><h2>No saved ideas yet.</h2><a href="./">Explore all ideas</a></div></section>
+</PlatformLayout>

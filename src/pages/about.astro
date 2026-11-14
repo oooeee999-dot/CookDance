@@ -1,15 +1,10 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PlatformLayout from '../layouts/PlatformLayout.astro';
+import { brand } from '../data/creative';
 import { withBase } from '../lib/urls';
+import { ArrowUpRight } from '@lucide/astro';
 ---
-<BaseLayout title="Our philosophy | CookDance" description="Cooking is a philosophy. Discover the idea behind CookDance and get in touch.">
-  <section class="about-hero container"><div class="breadcrumbs"><a href={withBase('/')}>Home</a><span>/</span><span>About</span></div><span class="kicker">A PERSONAL NOTE</span><h1>Cooking is<br /><em>a philosophy.</em></h1><p class="about-original" lang="zh-CN">cook其实是一种哲学。</p><p>Cooking invites us to observe, make choices, and learn through everyday practice. That curiosity is at the heart of CookDance—and the way we explore ingredients, techniques, and life around food.</p></section>
-  <section class="about-content container"><div><span class="kicker">YOUR COOKING. OUR SHARED TABLE.</span><h2>Cooking everything.<br />Dancing anywhere.</h2></div><div><p>A beautiful image of food can invite curiosity before we share a language. CookDance begins with that invitation, then makes room for the story, the ingredients, and the knowledge behind it.</p><p>Our founding idea is that cooking is a philosophy: an everyday practice of attention, expression, and discovery. Your cooking becomes part of a larger conversation when others see it, taste it, and respond.</p><p>We are building a welcoming place to explore food across cultures. Images and stories used for illustration are identified honestly; recipes, experiments, and product testing will only be described as tested after that work has been done.</p><a class="button button-dark" href={withBase('/')}>Explore the table <span aria-hidden="true">↗</span></a></div></section>
-  <section class="contact-section container" id="contact" aria-labelledby="contact-title">
-    <div class="contact-intro"><span class="kicker">GET IN TOUCH</span><h2 id="contact-title">Let’s talk food.</h2><p>A question, a shared idea, or a conversation about cooking. You’re welcome to get in touch.</p></div>
-    <div class="contact-links">
-      <a class="contact-link" href="mailto:boehnerhuang@gmail.com"><span class="contact-label">EMAIL</span><span class="contact-value">boehnerhuang@gmail.com</span><span class="contact-arrow" aria-hidden="true">↗</span></a>
-      <a class="contact-link" href="https://wa.me/8613612993822" target="_blank" rel="noopener noreferrer"><span class="contact-label">WHATSAPP</span><span class="contact-value">+86 136 1299 3822</span><span class="contact-arrow" aria-hidden="true">↗</span></a>
-    </div>
-  </section>
-</BaseLayout>
+<PlatformLayout title="Capability meets vitality" description="Cook stands for capability. Dance stands for vitality. Discover the idea behind CookDance.">
+  <header class="c-page-heading p-container"><span class="p-eyebrow">THE COOKDANCE IDEA</span><h1>Capability.<br /><em>With a life of its own.</em></h1><p>Cook = Capability. Dance = Vitality.</p></header>
+  <section class="c-about p-container"><h2>{brand.slogan}</h2><div><p>CookDance brings practical creative capability and a lively point of view to ideas from around the world.</p><p>Today, our focus is digital creative production: AI-assisted video, cinematic storytelling, digital design, and product visualization. We begin with the idea and shape the production around it.</p><p>Our long-term mission is to connect China’s creative and manufacturing capabilities with people around the world, through thoughtful products and services. This first chapter starts with digital creativity.</p><p>We value clear conversations and honest presentation. Service directions and visual studies are labeled as such; we do not present them as commissioned client work.</p><a class="c-button" href={withBase('/contact/')}>Start a conversation <ArrowUpRight size={16} /></a></div></section>
+</PlatformLayout>

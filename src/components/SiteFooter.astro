@@ -1,23 +1,24 @@
 ---
 import { ArrowUpRight, ArrowUp } from '@lucide/astro';
 import { withBase } from '../lib/urls';
+import { brand } from '../data/creative';
 ---
 <footer id="connect" class="p-personal-footer" aria-label="Our philosophy and contact">
   <div class="footer-content">
     <section class="footer-philosophy" aria-labelledby="footer-philosophy-title">
-      <span class="footer-label">A NOTE FROM THE FOUNDER</span>
-      <h2 id="footer-philosophy-title">Cooking is a philosophy.</h2>
-      <p>I believe cooking is a way to explore, express, and share. Cooking puts our ideas into practice; taste is how we understand them. Food can start a conversation before we share a language.</p>
-      <span class="footer-slogan">Cooking everything. Dancing anywhere.</span>
+      <span class="footer-label">CAPABILITY × VITALITY</span>
+      <h2 id="footer-philosophy-title">Ideas need capability.<br />Creativity needs life.</h2>
+      <p>Cook stands for capability. Dance stands for vitality. We connect China’s creative and manufacturing capabilities with people around the world. Today, that starts with AI video and digital creative production.</p>
+      <span class="footer-slogan">{brand.slogan}</span>
     </section>
     <section class="footer-contact" aria-labelledby="footer-contact-title">
-      <h2 id="footer-contact-title">Let’s talk food.</h2>
-      <a href="mailto:boehnerhuang@gmail.com">
-        <span><span class="footer-label">EMAIL</span><span class="footer-contact-value">boehnerhuang@gmail.com</span></span>
+      <h2 id="footer-contact-title">Let’s create together.</h2>
+      <a href={`mailto:${brand.email}`}>
+        <span><span class="footer-label">EMAIL</span><span class="footer-contact-value">{brand.email}</span></span>
         <ArrowUpRight size={17} stroke-width={1.5} aria-hidden="true" />
       </a>
-      <a href="https://wa.me/8613612993822" target="_blank" rel="noopener noreferrer">
-        <span><span class="footer-label">WHATSAPP</span><span class="footer-contact-value">+86 136 1299 3822</span></span>
+      <a href={brand.whatsapp} target="_blank" rel="noopener noreferrer">
+        <span><span class="footer-label">WHATSAPP</span><span class="footer-contact-value">{brand.whatsappLabel}</span></span>
         <ArrowUpRight size={17} stroke-width={1.5} aria-hidden="true" />
       </a>
     </section>

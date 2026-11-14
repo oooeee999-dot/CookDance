@@ -1,12 +1,16 @@
 ---
 import '../styles/platform.css';
-import { Search, Bookmark, X } from '@lucide/astro';
+import '../styles/creative.css';
+import { Search, Bookmark, X, Menu } from '@lucide/astro';
+import { brand } from '../data/creative';
 import { demoHref } from '../demo/content';
 import { withBase } from '../lib/urls';
 import SiteFooter from '../components/SiteFooter.astro';
 interface Props { title?: string; description?: string; image?: string; studio?: boolean; wall?: boolean; }
-const { title = 'Cooking everything. Dancing anywhere.', description = 'Discover a world of food through images. Cooking everything. Dancing anywhere.', image = '/images/platform/mezze.webp', studio = false, wall = false } = Astro.props;
-const noindex = studio || Astro.url.pathname.includes('/preview/') || Astro.url.pathname.endsWith('/read/');
+const { title = brand.slogan, description = `${brand.introduction} ${brand.description}`, image = '/images/platform/citrus.webp', studio = false, wall = false } = Astro.props;
+const legacy = /\/(preview|read|learn|recipes|taste-lab|kitchen|stories|articles|studio)(\/|$)/.test(Astro.url.pathname);
+const noindex = studio || legacy;
+const navigation = [{label:'Home',href:'/'},{label:'Services',href:'/#services'},{label:'Work',href:'/work/'},{label:'About',href:'/about/'},{label:'Contact',href:'/contact/'}];
 const canonical = new URL(Astro.url.pathname.replace('/preview/', '/'), Astro.site);
 const pageTitle = title.includes('CookDance') ? title : `${title} — CookDance`;
 ---
@@ -26,18 +30,23 @@ const pageTitle = title.includes('CookDance') ? title : `${title} — CookDance`
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <title>{pageTitle}</title>
   </head>
-  <body id="top" class:list={['platform', { 'is-studio': studio, 'is-wall': wall }]}>
+  <body id="top" data-experience={studio ? 'studio' : legacy ? 'food' : 'creative'} class:list={['platform', { 'is-studio': studio, 'is-wall': wall }]}>
     <a class="p-skip" href="#main">{studio ? '跳到内容' : 'Skip to content'}</a>
     {!studio && <>
       <header class="p-header"><div class="p-header-inner">
-        <a class="p-brand" href={demoHref()} aria-label="CookDance home"><img src={withBase('/favicon.svg')} alt="" width="40" height="40" /><span>Cook<span class="p-brand-light">Dance</span><small>Cooking everything. Dancing anywhere.</small></span></a>
-        <div class="p-header-actions"><button class="p-icon" data-search-open aria-label="Search food and stories"><Search size={24} stroke-width={1.5} /></button><a class="p-icon p-saved-link" href={demoHref('?view=saved')} aria-label="View saved images"><Bookmark size={24} stroke-width={1.5} /><span class="p-sr-only" data-saved-count>0</span></a></div>
+        <a class="p-brand" href={demoHref()} aria-label="CookDance home"><img src={withBase('/favicon.svg')} alt="" width="40" height="40" /><span>Cook<span class="p-brand-light">Dance</span><small>{brand.slogan}</small></span></a>
+        <nav class="p-desktop-nav" aria-label="Main navigation">{navigation.map(item => <a href={withBase(item.href)} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>{item.label}</a>)}</nav>
+        <div class="p-header-actions"><button class="p-icon" data-search-open aria-label={legacy ? 'Search food and stories' : 'Search creative ideas'}><Search size={24} stroke-width={1.5} /></button><a class="p-icon p-saved-link p-desktop-saved" href={demoHref('?view=saved#work')} aria-label="View saved ideas"><Bookmark size={24} stroke-width={1.5} /><span class="p-sr-only" data-saved-count>0</span></a><details class="p-mobile-menu"><summary aria-label="Open navigation"><Menu size={23} stroke-width={1.5} /></summary><nav aria-label="Mobile navigation">{navigation.map(item => <a href={withBase(item.href)}>{item.label}</a>)}<a href={demoHref('?view=saved#work')}>Saved ideas <span data-saved-count>0</span></a></nav></details></div>
       </div></header>
-      <dialog class="p-search-dialog" aria-labelledby="search-heading"><div class="p-search-top"><h2 id="search-heading">Follow your curiosity.</h2><button class="p-icon" data-search-close aria-label="Close search"><X size={24} /></button></div><label class="p-search-input"><Search size={22} stroke-width={1.5} /><input type="search" id="global-search" placeholder="An ingredient, a place, a little inspiration…" aria-label="Search images and stories" autocomplete="off" /></label><p class="p-search-caption" data-search-caption>Find a little kitchen inspiration.</p><div class="p-search-results" data-search-results></div></dialog>
+      <dialog class="p-search-dialog" aria-labelledby="search-heading"><div class="p-search-top"><h2 id="search-heading">Follow your curiosity.</h2><button class="p-icon" data-search-close aria-label="Close search"><X size={24} /></button></div><label class="p-search-input"><Search size={22} stroke-width={1.5} /><input type="search" id="global-search" placeholder={legacy ? 'An ingredient, a place…' : 'Video, fashion, a new idea…'} aria-label={legacy ? 'Search images and stories' : 'Search services and creative ideas'} autocomplete="off" /></label><p class="p-search-caption" data-search-caption>{legacy ? 'Find a little kitchen inspiration.' : 'Find a direction for your next idea.'}</p><div class="p-search-results" data-search-results></div></dialog>
     </>}
+    {legacy && !studio && <div class="p-archive-note">From the original CookDance food archive. <a href={withBase('/')}>Explore our creative services ↗</a></div>}
     <main id="main"><slot /></main>
     {!studio && <SiteFooter />}
     <div class="p-toast" role="status" aria-live="polite" hidden></div>
-    {!studio && <script>import '../demo/platform';</script>}
+    <script>
+      if (document.body.dataset.experience === 'food') import('../demo/platform');
+      else if (document.body.dataset.experience === 'creative') import('../scripts/creative');
+    </script>
   </body>
 </html>
