@@ -13,6 +13,7 @@ Cook = Capability（能力），Dance = Vitality（生命力）。当前方向�
 | 准备询盘 | https://cookdance.com/contact/ |
 | 改品牌、服务与卡片 | `src/data/creative.ts` |
 | 学习内容配置 | [CONTENT-GUIDE.md](CONTENT-GUIDE.md) |
+| 不用 Codex，自己更新文字和图片 | [自己更新图文.md](自己更新图文.md) |
 | 查看改造说明与验收 | [REMODEL-NOTES.md](REMODEL-NOTES.md) |
 | 查看部署 | [DEPLOYMENT.md](DEPLOYMENT.md) |
 | 找回标准美食版 | [GitHub 存档标签](https://github.com/oooeee999-dot/CookDance/tree/archive/cookdance-food-standard-2026-11-14) |
