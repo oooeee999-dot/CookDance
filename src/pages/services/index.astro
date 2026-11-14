@@ -1,0 +1,11 @@
+---
+import PlatformLayout from '../../layouts/PlatformLayout.astro';
+import ServiceCatalog from '../../components/ServiceCatalog.astro';
+import { withBase } from '../../lib/urls';
+import { ArrowUpRight } from '@lucide/astro';
+---
+<PlatformLayout title="Creative, technical & business services" description="Explore 13 service categories with CookDance. Bring your creative, technical, or business brief and discuss delivery resources in China." image="/images/services/brand-design.webp">
+  <header class="c-page-heading c-wide e-directory-header"><span class="p-eyebrow">THE COOKDANCE SERVICE NETWORK</span><h1>More possibilities.<br /><em>One place to begin.</em></h1><p>Creative, technical, and business services for global clients. Bring us your brief; we help define the work and connect suitable delivery resources in China.</p><a class="c-link" href={withBase('/contact/')}>Tell us what you have in mind <ArrowUpRight size={16} /></a></header>
+  <section class="p-wall-wrap" aria-label="Browse all services"><ServiceCatalog /></section>
+  <section class="e-network-note p-container" aria-labelledby="network-title"><div><span class="p-eyebrow">HOW COLLABORATION BEGINS</span><h2 id="network-title">Your brief.<br /><em>The right conversation.</em></h2></div><div><p>CookDance is your point of contact for discussing an idea and defining what it needs. We coordinate creative, technical, and business requests with appropriate delivery resources.</p><p>The team, scope, schedule, budget, review stages, and handover are confirmed for each project. Specialist or market-specific requirements are discussed before any engagement is agreed.</p><a class="c-button" href={withBase('/contact/')}>Start a Project <ArrowUpRight size={16} /></a></div></section>
+</PlatformLayout>

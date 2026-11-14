@@ -82,6 +82,14 @@
 
 后续如接入真实邮件服务，需要单独实现服务器端投递、错误处理和隐私说明；目前不要承诺已经接通。
 
+## 新增的全类目服务目录
+
+`src/data/service-catalog.ts` 管理原内容之外新增的 13 个服务分类。首页下方的分类卡片、`/services/` 目录、各分类详情、搜索入口和询盘选择都从这里读取。
+
+修改对应条目的 `description`、`introduction`、`offerings`、`brief`、`scopeNote` 可更新英文内容。可选图片及比例仍沿用原图文卡片规则。新增插图位于 `public/images/services/`，原始大图保留在本机忽略目录，提示词保存在 `design/service-expansion/IMAGE-PROMPTS.json`。
+
+旧创意卡片继续在 `src/data/creative.ts` 中管理；新的目录是追加内容，不会覆盖那 20 张卡片。当前没有把 Pages CMS 或旧工作台接入新目录。
+
 ## 旧工作台
 
-`/studio/` 属于保留的美食版浏览器原型，不能编辑新版 `creativeCards`。当前无需建设新 CMS。
+`/studio/` 属于保留的美食版浏览器原型，不能编辑新版 `creativeCards` 或新服务目录。可视化内容后台尚未接入。

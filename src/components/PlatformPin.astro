@@ -2,9 +2,9 @@
 import { Bookmark } from '@lucide/astro';
 import { storyHref, coverRatio, type Story } from '../demo/content';
 import { withBase } from '../lib/urls';
-import { cardColors, cardRatio, cardDestination, mediaSource, type CreativeCard } from '../data/creative';
-interface Props { story?: Story; card?: CreativeCard; index?: number; }
-const { story, card, index = 0 } = Astro.props;
+import { cardColors, cardRatio, cardDestination, mediaSource, type DisplayCard } from '../data/creative';
+interface Props { story?: Story; card?: DisplayCard; index?: number; saveable?: boolean; }
+const { story, card, index = 0, saveable = true } = Astro.props;
 if (!story && !card) throw new Error('PlatformPin requires a card or story.');
 const id = card?.id ?? story!.id;
 const title = card?.title ?? story!.title;
@@ -19,5 +19,5 @@ const ratio = card ? cardRatio(card) : coverRatio(story!.image);
     {image && <img src={image.startsWith('/') ? withBase(image) : image} alt={card?.imageAlt ?? story?.imageAlt ?? ''} width="800" height="1000" loading={index < 4 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} data-card-media={card ? '' : undefined} />}
     {card ? <><span class="p-card-kind">{card.kind}</span><div class="p-card-copy"><span class="p-card-category">{card.category}</span><h2>{title}</h2>{card.subtitle && <p>{card.subtitle}</p>}</div></> : <h2 class="p-sr-only">{title}</h2>}
   </a>
-  <button class="p-pin-save" data-save={!card ? id : undefined} data-creative-save={card ? id : undefined} aria-label={`Save ${title.replace(/\n/g, ' ')}`} aria-pressed="false"><Bookmark size={20} stroke-width={1.6} /></button>
+  {saveable && <button class="p-pin-save" data-save={!card ? id : undefined} data-creative-save={card ? id : undefined} aria-label={`Save ${title.replace(/\n/g, ' ')}`} aria-pressed="false"><Bookmark size={20} stroke-width={1.6} /></button>}
 </article>

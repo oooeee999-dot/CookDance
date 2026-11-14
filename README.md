@@ -10,6 +10,7 @@ Cook = Capability（能力），Dance = Vitality（生命力）。当前方向�
 | --- | --- |
 | 看正式首页 | https://cookdance.com/ |
 | 查看创意方向 | https://cookdance.com/work/ |
+| 查看新增的 13 类服务目录 | https://cookdance.com/services/ |
 | 准备询盘 | https://cookdance.com/contact/ |
 | 改品牌、服务与卡片 | `src/data/creative.ts` |
 | 学习内容配置 | [CONTENT-GUIDE.md](CONTENT-GUIDE.md) |
@@ -19,6 +20,8 @@ Cook = Capability（能力），Dance = Vitality（生命力）。当前方向�
 | 找回标准美食版 | [GitHub 存档标签](https://github.com/oooeee999-dot/CookDance/tree/archive/cookdance-food-standard-2026-11-14) |
 
 ## 本地运行
+
+2026-11-14 增补：原有 20 张创意卡片、图片、三个重点服务与旧链接全部保留。在原首页后方追加完整服务目录，并新增 13 类服务详情、分类预选询盘及按分类生成的 WhatsApp 草稿。分类内容位于 `src/data/service-catalog.ts`，不属于已接通的 CMS 后台。变更与图片来源见 [服务扩展交付说明](design/service-expansion/交付说明.md)。
 
 Node.js 24.15.0，首次使用运行 `npm ci`，随后 `npm run dev`。终端显示本地预览地址。
 

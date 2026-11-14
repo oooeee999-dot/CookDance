@@ -1,0 +1,11 @@
+---
+import PlatformPin from './PlatformPin.astro';
+import { catalogCards } from '../data/service-catalog';
+import '../styles/service-catalog.css';
+interface Props { eager?: boolean; }
+const { eager = true } = Astro.props;
+---
+<div class="p-photo-wall e-catalog-grid" data-catalog-grid aria-label="13 service categories">
+  {catalogCards.map((card,index) => <PlatformPin card={card} index={eager ? index : index + 4} saveable={false} />)}
+</div>
+<p class="e-image-note">Images in this service directory are AI-generated concept illustrations, not client commissions or photographs of CookDance facilities.</p>

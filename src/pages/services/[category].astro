@@ -1,0 +1,32 @@
+---
+import PlatformLayout from '../../layouts/PlatformLayout.astro';
+import { serviceCategories, categoryHref, categoryWhatsAppUrl, conceptImageNote } from '../../data/service-catalog';
+import { brand } from '../../data/creative';
+import { withBase } from '../../lib/urls';
+import { ArrowUpRight, ArrowLeft } from '@lucide/astro';
+import '../../styles/service-catalog.css';
+export function getStaticPaths() { return serviceCategories.map((category,index) => ({params:{category:category.id},props:{category,index}})); }
+const { category, index } = Astro.props;
+const related = category.related.map(id => serviceCategories.find(item => item.id === id)!).filter(Boolean);
+const contactHref = withBase(`/contact/?service=${category.id}`);
+const schema = {
+  '@context':'https://schema.org','@type':'Service',name:`${category.title} — CookDance`,serviceType:category.title,
+  description:category.description,url:new URL(withBase(categoryHref(category.id)),Astro.site).href,
+  provider:{'@type':'Organization',name:brand.name,url:Astro.site?.href},
+};
+---
+<PlatformLayout title={`${category.title} Services`} description={category.description} image={category.image ?? '/images/services/brand-design.webp'}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <article class="e-service-page p-container">
+    <nav class="e-breadcrumbs" aria-label="Breadcrumb"><a href={withBase('/')}>Home</a><span>/</span><a href={withBase('/services/')}>Services</a><span>/</span><span>{category.title}</span></nav>
+    <header class="e-service-header"><div><span class="p-eyebrow">COOKDANCE / {String(index+1).padStart(2,'0')} OF 13</span><h1>{category.title}</h1><p class="e-service-tagline">{category.tagline}</p><p class="e-service-intro">{category.introduction}</p><div class="e-service-actions"><a class="c-button" href={contactHref}>Discuss your project <ArrowUpRight size={16} /></a><a class="c-link" href={categoryWhatsAppUrl(category,brand.whatsapp)} target="_blank" rel="noopener noreferrer" aria-label={`Discuss ${category.title} on WhatsApp`}>WhatsApp <ArrowUpRight size={15} /></a></div></div>
+      {category.image ? <figure class="e-service-photo"><img src={withBase(category.image)} alt={category.imageAlt ?? ''} width="1000" height="1250" fetchpriority="high" /><figcaption>{conceptImageNote}</figcaption></figure> : <aside class:list={['e-type-panel',`e-theme-${category.background}`]}><span class="p-eyebrow">A PROJECT STARTS WITH A QUESTION</span><p>{category.tagline}</p><a href="#project-brief">What should I include in a brief? <ArrowUpRight size={15} /></a></aside>}
+    </header>
+    <div class="e-service-body"><section aria-labelledby="possibilities-title"><span class="p-eyebrow">WHAT WE CAN EXPLORE</span><h2 id="possibilities-title">Make the brief specific.</h2><div class="e-offerings">{category.offerings.map((offering,i) => <section class="e-offering"><span class="c-number">0{i+1}</span><div><h3>{offering.title}</h3><p>{offering.description}</p></div></section>)}</div><aside class="e-example"><span class="p-eyebrow">AN EXAMPLE BRIEF</span><p>{category.example}</p><small>Illustrative project scope, not a completed client case.</small></aside></section>
+      <aside class="e-brief-panel" id="project-brief"><span class="p-eyebrow">BEFORE WE BEGIN</span><h2>What to send us.</h2><ul>{category.brief.map(item => <li>{item}</li>)}</ul><p>References are welcome. An early idea is enough to start the conversation; the final scope is agreed together.</p><a class="c-link" href={contactHref}>Prepare your brief <ArrowUpRight size={15} /></a></aside>
+    </div>
+    <section class="e-scope-note" aria-labelledby="scope-title"><span class="p-eyebrow">A CLEAR WORKING AGREEMENT</span><h2 id="scope-title">Define the work. Then begin.</h2><p>{category.scopeNote}</p><p>We confirm suitable delivery resources, responsibilities, review stages, and the agreed output before production. Your enquiry starts a discussion, not an automatic order.</p></section>
+    <section class="e-related" aria-labelledby="related-services-title"><span class="p-eyebrow">RELATED POSSIBILITIES</span><h2 id="related-services-title">One idea can open another.</h2><div>{related.map(item => <a href={withBase(categoryHref(item.id))}><span>{item.title}<small>{item.tagline}</small></span><ArrowUpRight size={18} /></a>)}</div></section>
+    <div class="e-service-end"><a class="c-link" href={withBase('/services/')}><ArrowLeft size={15} />All service categories</a><a class="c-button" href={contactHref}>Start a Project <ArrowUpRight size={16} /></a></div>
+  </article>
+</PlatformLayout>

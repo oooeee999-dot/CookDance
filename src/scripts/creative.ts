@@ -1,4 +1,5 @@
 import { creativeCards, cardDestination, brand, services, briefText, briefMailto, type ProjectBrief } from '../data/creative';
+import { catalogCards, serviceCategories } from '../data/service-catalog';
 import { layoutWall } from '../lib/masonry';
 import { withBase } from '../lib/urls';
 const $ = <T extends HTMLElement = HTMLElement>(selector: string) => document.querySelector<T>(selector);
@@ -45,13 +46,19 @@ if (wall) {
 }
 syncSaved();
 
+document.querySelectorAll<HTMLElement>('[data-catalog-grid]').forEach(grid => {
+  layoutWall(grid);
+  let lastWidth = 0;
+  new ResizeObserver(entries => { const width = entries[0].contentRect.width; if (Math.abs(width-lastWidth)>.5) {lastWidth = width; layoutWall(grid);} }).observe(grid);
+});
+
 const dialog = $<HTMLDialogElement>('.p-search-dialog');
 const search = $<HTMLInputElement>('#global-search');
 const results = $('[data-search-results]');
 function renderSearch() {
   if (!search || !results) return;
   const query = search.value.trim().toLocaleLowerCase();
-  const matches = creativeCards.filter(card => `${card.title} ${card.subtitle ?? ''} ${card.category} ${card.description}`.replace(/\s+/g,' ').toLocaleLowerCase().includes(query));
+  const matches = [...creativeCards,...catalogCards].filter(card => `${card.title} ${card.subtitle ?? ''} ${card.category} ${card.description}`.replace(/\s+/g,' ').toLocaleLowerCase().includes(query));
   results.replaceChildren();
   for (const card of matches) {
     const link = document.createElement('a'); link.className = 'c-search-result'; const destination = cardDestination(card); link.href = destination.startsWith('/') ? withBase(destination) : destination;
@@ -73,7 +80,7 @@ let preparedBrief = '';
 if (form) {
   const serviceInput = form.elements.namedItem('service') as HTMLSelectElement;
   const preset = new URLSearchParams(location.search).get('service');
-  if (services.some(service => service.id === preset)) serviceInput.value = preset!;
+  if ([...services,...serviceCategories].some(service => service.id === preset)) serviceInput.value = preset!;
   form.addEventListener('submit',event => {
     event.preventDefault(); if (!form.reportValidity()) return;
     const data = new FormData(form);

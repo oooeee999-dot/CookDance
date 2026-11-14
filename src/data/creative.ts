@@ -62,6 +62,7 @@ export interface CreativeCard {
   kind: 'Service direction' | 'Visual study' | 'Future exploration';
 }
 const studyNote = 'AI-generated still-image study from the original CookDance illustration library. This is not a commissioned campaign, a finished video, or evidence of client work.';
+export type DisplayCard = Omit<CreativeCard, 'service'>;
 export const creativeCards: CreativeCard[] = [
   { id: 'ai-video-ads', title: 'AI Video\nProduction', subtitle: 'Ideas, brought to life.', category: 'AI video', service: 'ai-video-production', description: 'Explore an AI-assisted video direction for your brand, product, or next idea. Start with a brief; shape the story, images, and edit together.', background: 'olive', sizeVariant: 'tall', kind: 'Service direction' },
   { id: 'product-storytelling', title: 'Product\nStorytelling', subtitle: 'Light. Texture. Character.', category: 'Visual direction', service: 'digital-creative-services', description: 'A still-life study in light, material, and mood. An example of a visual language we could explore for a product story.', image: '/images/platform/citrus.webp', imageAlt: 'Sunlit glass, olive oil, lemon, and leaves in a warm still life', imageNote: studyNote, background: 'paper', sizeVariant: 'portrait', kind: 'Visual study' },
@@ -96,8 +97,8 @@ export function safeDestination(value?: string): string | undefined {
   if (/^\/(?!\/)/.test(value) && !/[\\\u0000-\u0020]/.test(value)) return value;
   try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password ? url.href : undefined; } catch { return undefined; }
 }
-export function cardDestination(card: CreativeCard): string { return safeDestination(card.link) ?? `/work/${card.id}/`; }
-export function cardColors(card: CreativeCard) {
+export function cardDestination(card: DisplayCard): string { return safeDestination(card.link) ?? `/work/${card.id}/`; }
+export function cardColors(card: DisplayCard) {
   const theme = cardThemes[card.background] ?? cardThemes.paper;
   return { background: theme.background, color: /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(card.textColor ?? '') ? card.textColor! : theme.color };
 }

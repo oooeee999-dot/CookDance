@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-14",
+  "purpose": "Additional service category concept illustrations; not real client work or premises",
+  "images": [
+    {
+      "file": "public/images/services/brand-design.webp",
+      "prompt": "Use case: product-mockup. Create one portrait 4:5 editorial photograph for CookDance's service-category card, depicting a tasteful unbranded packaging design concept: a sculptural dark olive glass bottle, warm ivory folded carton, small clay-colored paper color swatches and a clean embossed paper sleeve on a pale limestone table. Art-directed real-material studio still life, natural side light, rich tactile paper grain, restrained luxury magazine photography, warm off-white, deep olive and muted terracotta palette. Centered objects with breathing room at the bottom for a website title overlay. No legible words, logos, watermarks, people, or claimed client brands. This is an illustrative creative concept, not a photograph of commissioned client work."
+    },
+    {
+      "file": "public/images/services/music-audio.webp",
+      "prompt": "Use case: photorealistic-natural. Create one portrait 4:5 cinematic editorial photograph for CookDance's music and audio service-category card. A close, beautifully composed recording studio still life: one unbranded professional silver condenser microphone with circular dark pop shield, warm wood surface, a coiled cable and soft out-of-focus olive acoustic fabric. Subtle window light, real metal texture, tactile natural materials, warm ivory and deep olive shadows, high-end independent music magazine feeling. The microphone is the clear subject; reserve quiet shadowed space near the lower third for an overlaid title. No people, logos, readable text, fake screens or watermarks. This is an illustrative studio concept, not a claimed actual CookDance facility."
+    },
+    {
+      "file": "public/images/services/web-technology.webp",
+      "prompt": "Use case: photorealistic-natural. Create one portrait 4:5 quiet editorial photograph for CookDance's website and software service-category card. A sophisticated unbranded thin laptop on a warm off-white studio desk, viewed at a three-quarter angle. Its display has a tasteful abstract modular web layout with olive blocks, ivory cards and tiny non-readable neutral lines, no brand names and no legible words. Include a small closed sketchbook and a ceramic cup as secondary objects. Natural morning side light, genuine materials, restrained creative-workspace magazine quality, warm cream, muted sage, deep olive palette. Centered subject with calm space near the bottom for a title overlay. No people, glowing neon, blue-purple tech gradients, logos or watermark. Illustrative concept, not a real client dashboard."
+    }
+  ]
+}
