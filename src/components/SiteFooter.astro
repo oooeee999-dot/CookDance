@@ -1,7 +1,7 @@
 ---
 import { ArrowUpRight, ArrowUp } from '@lucide/astro';
 import { withBase } from '../lib/urls';
-import { brand } from '../data/creative';
+import { brand, whatsappProjectUrl } from '../data/creative';
 ---
 <footer id="connect" class="p-personal-footer" aria-label="Our philosophy and contact">
   <div class="footer-content">
@@ -17,7 +17,7 @@ import { brand } from '../data/creative';
         <span><span class="footer-label">EMAIL</span><span class="footer-contact-value">{brand.email}</span></span>
         <ArrowUpRight size={17} stroke-width={1.5} aria-hidden="true" />
       </a>
-      <a href={brand.whatsapp} target="_blank" rel="noopener noreferrer">
+      <a href={whatsappProjectUrl} target="_blank" rel="noopener noreferrer">
         <span><span class="footer-label">WHATSAPP</span><span class="footer-contact-value">{brand.whatsappLabel}</span></span>
         <ArrowUpRight size={17} stroke-width={1.5} aria-hidden="true" />
       </a>

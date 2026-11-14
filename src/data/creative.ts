@@ -7,7 +7,9 @@ export const brand = {
   email: 'boehnerhuang@gmail.com',
   whatsapp: 'https://wa.me/8613612993822',
   whatsappLabel: '+86 136 1299 3822',
+  whatsappMessage: "Hi! I came across CookDance's philosophy and would love to talk with you about short-form drama production.",
 };
+export const whatsappProjectUrl = `${brand.whatsapp}?text=${encodeURIComponent(brand.whatsappMessage)}`;
 
 export const services = [
   {

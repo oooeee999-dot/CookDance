@@ -1,0 +1,27 @@
+---
+import { MessageCircle } from '@lucide/astro';
+import { whatsappProjectUrl } from '../data/creative';
+---
+<a class="c-whatsapp" href={whatsappProjectUrl} target="_blank" rel="noopener noreferrer" title="WhatsApp · Short-form drama production" aria-label="Chat about short-form drama production on WhatsApp (opens in a new tab)">
+  <MessageCircle size={15} stroke-width={1.6} aria-hidden="true" />
+  <span class="p-sr-only">WhatsApp</span>
+</a>
+
+<style>
+  .c-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    min-height: 24px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #47624a;
+    line-height: 1;
+  }
+  .c-whatsapp:hover { background: #eef0e6; }
+  .c-whatsapp svg { flex-shrink: 0; }
+</style>

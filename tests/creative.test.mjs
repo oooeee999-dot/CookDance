@@ -1,7 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
-import { creativeCards, services, cardRatio, cardColors, mediaSource, safeDestination, cardDestination, briefMailto, briefText } from '../src/data/creative.ts';
+import { creativeCards, services, cardRatio, cardColors, mediaSource, safeDestination, cardDestination, briefMailto, briefText, brand, whatsappProjectUrl } from '../src/data/creative.ts';
+
+test('WhatsApp uses the correct international number and preserves the complete draft', () => {
+  const url = new URL(whatsappProjectUrl);
+  assert.equal(url.origin,'https://wa.me');
+  assert.equal(url.pathname,'/8613612993822');
+  assert.equal(url.searchParams.get('text'),brand.whatsappMessage);
+  assert.match(url.searchParams.get('text'),/CookDance's philosophy/);
+  assert.match(url.searchParams.get('text'),/short-form drama production/);
+  assert.deepEqual([...url.searchParams.keys()],['text']);
+});
 
 test('all 20 original wall positions retain their original ratios, with or without media', () => {
   const ratios = ['3 / 5','5 / 8','3 / 5','3 / 5','4 / 5','4 / 5','1 / 1','1 / 1','4 / 5','4 / 5','1 / 1','3 / 4','1 / 1','4 / 3','4 / 5','4 / 5','3 / 4','4 / 3','4 / 3','1 / 1'];
