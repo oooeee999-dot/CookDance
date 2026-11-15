@@ -2,6 +2,7 @@
 import PlatformLayout from '../layouts/PlatformLayout.astro';
 import PlatformPin from '../components/PlatformPin.astro';
 import ServiceCatalog from '../components/ServiceCatalog.astro';
+import PortraitBanner from '../components/PortraitBanner.astro';
 import { brand, creativeCards, services } from '../data/creative';
 import { withBase } from '../lib/urls';
 import { ArrowUpRight, ArrowLeft, Bookmark } from '@lucide/astro';
@@ -31,4 +32,5 @@ import { ArrowUpRight, ArrowLeft, Bookmark } from '@lucide/astro';
   ].map(([title,text],i) => <li><span class="c-number">0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></section>
   <section class="c-project-invite p-container" aria-labelledby="project-invite-title"><div><span class="p-eyebrow">YOUR NEXT IDEA</span><h2 id="project-invite-title">Let’s make something<br /><em>worth sharing.</em></h2></div><a class="c-button" href={withBase('/contact/')}>Start a Project <ArrowUpRight size={17} /></a></section>
   <section class="e-home-expansion" id="service-network" aria-labelledby="expanded-services-title"><div class="e-expansion-heading"><div><span class="p-eyebrow">MORE WAYS TO WORK TOGETHER</span><h2 id="expanded-services-title">More possibilities.<br /><em>The same spirit.</em></h2><p>Tell us what you have in mind. We’ll work through the details, find practical solutions, and take care of your project from the first conversation to final delivery.</p></div><a class="c-link" href={withBase('/services/')}>View the full service directory <ArrowUpRight size={17} /></a></div><ServiceCatalog eager={false} /></section>
+  <PortraitBanner />
 </PlatformLayout>

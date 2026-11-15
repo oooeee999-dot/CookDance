@@ -1,0 +1,11 @@
+{
+  "status": "User approved publication through GitHub and Cloudflare Pages",
+  "date": "2026-11-15",
+  "mode": "built-in image_gen edit",
+  "input": "User-provided portrait; original preserved in ignored local originals/contact-banner folder",
+  "outputs": [
+    "public/images/contact/portrait-banner-v1.webp",
+    "public/images/contact/portrait-mobile-v1.webp"
+  ],
+  "prompt": "Use case: identity-preserve. Asset type: long horizontal website footer banner, 3:1 aspect ratio. Input image 1 is the EDIT TARGET, a close-up studio portrait of a man with olive tortoiseshell glasses and a black jacket against a plain light gray backdrop. Primary request: outpaint ONLY toward the RIGHT, making a wide 3:1 photograph. Keep the ENTIRE original square image intact in the left third at its original proportions; extend the existing quiet light-gray studio backdrop seamlessly across the remaining two thirds to the right. Preserve the man's exact face, identity, expression, skin texture, glasses geometry and color, hair, clothes, lighting and photographic character. Do not beautify, retouch or regenerate the face; do not zoom, flip or recenter him. The right two thirds must be calm empty pale gray studio background, with only a natural extremely subtle light falloff that matches the source. Let the existing black jacket end naturally near the lower left, without stretching the body across the full banner. No other people, objects, text, logos, watermark, decorative shapes, vignette, artificial blur or added scene. This is an understated editorial contact banner; typography will be real HTML added separately."
+}

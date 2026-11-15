@@ -1,0 +1,47 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import { brand } from '../data/creative';
+import { withBase } from '../lib/urls';
+---
+<section class="portrait-banner" id="conversation" aria-labelledby="portrait-banner-title">
+  <div class="portrait-banner-frame">
+    <picture>
+      <source media="(max-width: 650px)" srcset={withBase('/images/contact/portrait-mobile-v1.webp')} />
+      <img src={withBase('/images/contact/portrait-banner-v1.webp')} alt="A close-up studio portrait with olive glasses against a quiet gray background" width="2160" height="720" loading="lazy" decoding="async" />
+    </picture>
+    <div class="portrait-banner-copy">
+      <span class="p-eyebrow">LET’S TALK</span>
+      <h2 id="portrait-banner-title">Let’s make<br /><em>it happen.</em></h2>
+      <p>{brand.slogan}</p>
+      <a class="c-button" href={withBase('/contact/')}>Start a conversation <ArrowUpRight size={17} aria-hidden="true" /></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .portrait-banner { max-width: 1920px; margin: 30px auto 24px; padding: 0 22px; scroll-margin-top: 128px; }
+  .portrait-banner-frame { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; min-height: clamp(360px, 31vw, 560px); isolation: isolate; overflow: hidden; border-radius: 8px; background: #c6c5c3; }
+  picture { position: absolute; inset: 0; z-index: -1; }
+  img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+  .portrait-banner-copy { grid-column: 2; padding: 36px clamp(28px, 4vw, 64px); }
+  .p-eyebrow { color: #475440; }
+  h2 { margin: 17px 0 19px; font: 400 clamp(40px, 4.7vw, 70px)/1.04 Georgia, serif; letter-spacing: -1.8px; color: #27392e; }
+  h2 em { font-weight: 400; }
+  p { font: 400 17px/1.7 Georgia, serif; color: #40503b; }
+  .c-button { margin-top: 27px; }
+  @media (max-width: 900px) and (min-width: 651px) {
+    .portrait-banner-copy { padding: 28px; }
+    h2 { font-size: 42px; }
+    p { font-size: 15px; }
+  }
+  @media (max-width: 650px) {
+    .portrait-banner { margin: 20px auto; padding: 0 12px; scroll-margin-top: 90px; }
+    .portrait-banner-frame { display: block; min-height: 0; border-radius: 6px; }
+    picture { display: block; position: relative; z-index: 0; aspect-ratio: 4/3; }
+    img { object-position: left 25%; }
+    .portrait-banner-copy { padding: 29px 27px 33px; }
+    h2 { font-size: clamp(39px, 10vw, 51px); letter-spacing: -1.4px; margin: 15px 0 16px; }
+    p { font-size: 16px; }
+    .c-button { margin-top: 24px; }
+  }
+</style>
