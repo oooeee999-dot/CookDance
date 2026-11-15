@@ -22,8 +22,8 @@ export const conceptImageNote = 'AI-generated concept illustration. It does not 
 export const serviceCategories: ServiceCategory[] = [
   {
     id: 'graphics-design', title: 'Graphics & Design', cardTitle: 'Graphics\n& Design', tagline: 'Give an idea a visual identity.',
-    description: 'Brand identity, packaging, digital graphics, and 3D design coordinated around your creative brief.',
-    introduction: 'A new brand, a product launch, or a more coherent visual language. Bring us the idea and the context; we help define the design brief and connect suitable creative resources in China. The direction, source files, and intended uses are agreed before production.',
+    description: 'Brand identity, packaging, digital graphics, and 3D design shaped around your creative brief.',
+    introduction: 'A new brand, a product launch, or a more coherent visual language. Bring us the idea and the context. We’ll shape the design direction with you and work through the details, from early concepts to the files you need for launch.',
     offerings: [
       {title:'Brand identity',description:'Logo exploration, typography, color, and a practical set of brand assets shaped around your audience.'},
       {title:'Packaging & product concepts',description:'Packaging layouts, mockups, and product-design concepts, with dimensions and production requirements discussed upfront.'},
@@ -37,7 +37,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     id:'digital-marketing',title:'Digital Marketing',cardTitle:'Digital\nMarketing',tagline:'Connect the message and the audience.',
     description:'Search content, campaign creative, and social media support for brands reaching audiences across markets.',
-    introduction:'Start with the audience you want to reach and the action you want them to take. We help scope a marketing project and coordinate the content, creative, or operational resources it needs. The channels, responsibilities, and measures of progress are defined together.',
+    introduction:'Start with the audience you want to reach and the action you want them to take. We’ll develop the content, creative, and practical support your campaign needs, with a clear plan for the channels, deliverables, and measures of progress.',
     offerings:[
       {title:'Search & website content',description:'Content briefs, landing-page copy, and practical on-page improvements aligned with the actual service or product.'},
       {title:'Campaign creative',description:'Visual and copy variations for agreed advertising channels, with clear formats and a consistent message.'},
@@ -51,7 +51,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     id:'writing-localization',title:'Writing & Localization',cardTitle:'Writing\n& Translation',tagline:'Clear words, across borders.',
     description:'Copywriting, translation, and localization for product pages, brands, scripts, and international communication.',
-    introduction:'Good writing makes the intent clear. Good localization makes it feel at home in the intended market. We coordinate writing and language projects around the source material, tone, audience, and level of subject expertise the work requires.',
+    introduction:'Good writing makes the intent clear. Good localization makes it feel at home in the intended market. We work with your source material, tone, and audience to create language that carries the right meaning, with careful review before delivery.',
     offerings:[
       {title:'Brand & product copy',description:'Website copy, product descriptions, campaign messages, and editorial writing with a defined purpose and voice.'},
       {title:'Translation & localization',description:'Content adapted for agreed language pairs and markets, with terminology and review responsibilities set in the brief.'},
@@ -78,8 +78,8 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     id:'music-audio',title:'Music & Audio',cardTitle:'Music\n& Audio',tagline:'The part you feel before you see.',
-    description:'Voiceover, sound design, music production, and audio post-production coordinated for your project.',
-    introduction:'Sound sets the pace and changes how a story feels. We help define the audio brief and connect appropriate production resources, from a spoken introduction to the sound world of a short film. Language, performance, licensing, and technical delivery all form part of the scope.',
+    description:'Voiceover, sound design, music production, and audio post-production for your project.',
+    introduction:'Sound sets the pace and changes how a story feels. From a spoken introduction to the sound world of a short film, we work with you on the right voice, texture, and rhythm. Performance, licensing, and final audio formats are considered from the start.',
     offerings:[
       {title:'Voiceover & spoken content',description:'Voice direction and recording support for commercials, explainers, narration, and agreed language needs.'},
       {title:'Music & sound design',description:'Original or appropriately licensed music approaches, sound effects, and sonic ideas for creative projects.'},
@@ -92,8 +92,8 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     id:'programming-tech',title:'Programming & Tech',cardTitle:'Web, Apps\n& Technology',tagline:'Useful ideas, made functional.',
-    description:'Websites, applications, integrations, and technical development matched to practical business requirements.',
-    introduction:'Bring a problem, a workflow, or a product idea. We help turn it into a technical brief and coordinate suitable development resources. The first conversation defines what the software should do, the systems it must work with, and what support you will need after delivery.',
+    description:'Websites, applications, integrations, and technical development built around practical business requirements.',
+    introduction:'Bring a problem, a workflow, or a product idea. We’ll turn it into a practical development plan and work through the design, build, testing, and handover. Together, we define what the software should do and what support you’ll need after delivery.',
     offerings:[
       {title:'Websites & web applications',description:'Business websites, content platforms, and tailored web tools developed against an agreed feature list.'},
       {title:'Apps & integrations',description:'Application development, API integrations, and connections between existing business systems.'},
@@ -106,7 +106,7 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     id:'ai-services',title:'AI Services',cardTitle:'AI, applied\nwith purpose.',tagline:'Start with the use, then the tools.',
-    description:'AI-assisted creative production, prototypes, and workflow development coordinated around an explicit use case.',
+    description:'AI-assisted creative production, prototypes, and workflow development focused on a clear use case.',
     introduction:'AI can be part of a creative process or a technical workflow. We start with the outcome you need and discuss where AI is appropriate, what inputs are available, and how the result will be reviewed. This category connects related work across design, video, writing, and development.',
     offerings:[
       {title:'AI creative production',description:'Image development, video concepts, and coordinated creative assets with the generated nature of material made clear.'},
@@ -121,7 +121,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     id:'data-analytics',title:'Data & Analytics',cardTitle:'Data\n& Analytics',tagline:'Make information useful.',
     description:'Data preparation, analysis, reporting, dashboards, and visualization for clearly defined business questions.',
-    introduction:'Useful analysis begins with a question. We help scope the data work required to answer it, then coordinate preparation, analysis, or reporting resources. The project defines the source data, its limitations, the intended audience, and the decisions the output should support.',
+    introduction:'Useful analysis begins with a question. We work from the data you have towards reports, dashboards, and visualizations you can use. Clear definitions, documented assumptions, and an understandable handover help make the result practical.',
     offerings:[
       {title:'Data preparation',description:'Cleaning, organizing, and combining agreed datasets into a documented, usable structure.'},
       {title:'Reports & dashboards',description:'Recurring reports, spreadsheet models, and dashboard views tailored to an agreed set of measures.'},
@@ -135,7 +135,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     id:'business-support',title:'Business Support',cardTitle:'Business\nSupport',tagline:'Room to focus on the next step.',
     description:'Ecommerce operations, research, documentation, and practical project support for overseas businesses.',
-    introduction:'Growing a business creates work beyond the core product. We help define the operational tasks that can be supported through an agreed project, including the tools, handover process, and responsibilities involved. Delivery resources are matched after the work is understood.',
+    introduction:'Growing a business creates work beyond the core product. From product catalogs to research and documentation, we help move those tasks forward with an agreed workflow, clear updates, and a useful handover.',
     offerings:[
       {title:'Ecommerce support',description:'Product-information preparation, catalog maintenance, and store-operation tasks with clear access and approval boundaries.'},
       {title:'Business research',description:'Structured desk research, information gathering, and comparison documents around a defined question.'},
@@ -148,8 +148,8 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     id:'strategy-consulting',title:'Strategy & Consulting',cardTitle:'Strategy\n& Consulting',tagline:'A clearer view of the decision.',
-    description:'Business, brand, and project consulting coordinated around the relevant field, market, and decision.',
-    introduction:'Start with the decision you need to make. We help define a consulting brief and identify suitable subject-matter resources. Relevant experience, professional requirements, the evidence available, and the form of the advice are discussed before an engagement is agreed.',
+    description:'Business, brand, and project consulting focused on your market, questions, and next decision.',
+    introduction:'Start with the decision you need to make. We’ll clarify the questions, examine the available evidence, and work towards a useful recommendation. The subject, expected output, and any specialist requirements are agreed before work begins.',
     offerings:[
       {title:'Business & market questions',description:'Project scoping for market research, business planning, and an informed assessment of options.'},
       {title:'Brand & communication strategy',description:'Audience, positioning, and communication direction to guide subsequent creative work.'},
@@ -162,10 +162,10 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     id:'photography-retouching',title:'Photography & Retouching',cardTitle:'Photography\n& Retouching',tagline:'Objects, seen with intention.',
-    description:'Product photography, image retouching, and ecommerce image preparation coordinated for your brand.',
-    introduction:'A useful product image makes form, detail, and character easy to understand. We help establish a shot list or retouching brief and coordinate suitable image-production resources. Physical photography and AI-generated visual concepts are discussed and identified as different approaches.',
+    description:'Product photography, image retouching, and ecommerce image preparation for your brand.',
+    introduction:'A useful product image makes form, detail, and character easy to understand. We’ll work with you on the shot list, visual direction, retouching, and final image formats. Physical photography and AI-generated concepts are clearly identified so you know how each image is made.',
     offerings:[
-      {title:'Product photography',description:'Shot planning and photography coordination for products, materials, details, and agreed lifestyle settings.'},
+      {title:'Product photography',description:'Shot planning and photography for products, materials, details, and agreed lifestyle settings.'},
       {title:'Retouching & preparation',description:'Background work, color adjustments, cleanup, and exports prepared for the intended channels.'},
       {title:'Coordinated image sets',description:'Consistent product and campaign images shaped around a shot list and reference direction.'},
     ],
@@ -177,7 +177,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     id:'finance-bookkeeping',title:'Finance & Bookkeeping',cardTitle:'Finance\n& Bookkeeping',tagline:'Clear records. Defined responsibilities.',
     description:'Bookkeeping support, financial-report preparation, and analysis scoped to the relevant market and requirements.',
-    introduction:'Tell us which records or reporting tasks need attention and where the business operates. We help define the support required and confirm an appropriate delivery arrangement. Applicable professional requirements, data handling, and responsibility for final review are established before work begins.',
+    introduction:'Tell us which records or reporting tasks need attention and where the business operates. We’ll agree a clear plan for organizing the information and preparing the required output. Applicable professional requirements, data handling, and final review are clarified before work begins.',
     offerings:[
       {title:'Bookkeeping support',description:'Record organization and agreed bookkeeping tasks based on the systems and review process you use.'},
       {title:'Reporting preparation',description:'Spreadsheet reports, reconciliations, and management-information preparation within a defined scope.'},
@@ -191,14 +191,14 @@ export const serviceCategories: ServiceCategory[] = [
   {
     id:'learning-hobbies',title:'Learning & Hobbies',cardTitle:'Learning\n& Hobbies',tagline:'Curiosity, with a little direction.',
     description:'Subject-specific lessons, creative learning, and hobby support matched to your goals and preferred format.',
-    introduction:'A creative skill, a new tool, or a subject you want to explore. We help define what you would like to learn and discuss an appropriate teaching or support arrangement. The subject, instructor background, language, and learning format are agreed for the particular request.',
+    introduction:'A creative skill, a new tool, or a subject you want to explore. Tell us your starting point and what you’d like to achieve. We’ll work with you on a practical learning plan, with the subject, instructor, language, and session format agreed in advance.',
     offerings:[
       {title:'Creative skills',description:'Project-based introductions to areas such as design, storytelling, image-making, and audio production.'},
       {title:'Tools & practical workflows',description:'Guided sessions around a specific software tool or a clearly defined practical task.'},
       {title:'Hobby learning',description:'Subject-specific lessons or guidance, matched to the topic and the learner’s starting point.'},
     ],
     brief:['Subject and what you want to achieve','Current level and example interests','Preferred language, session format, and schedule','Instructor requirements and expected learning materials'],
-    scopeNote:'Availability depends on the subject and suitable teaching resources. Instructor suitability and learning objectives are discussed in advance; outcomes are not guaranteed.',
+    scopeNote:'The subject, instructor background, session availability, and learning objectives are confirmed in advance. Sessions are shaped around your starting point and goals.',
     example:'A short series of guided sessions to develop a first storyboard or learn an image-editing workflow.',
     related:['music-audio','writing-localization','programming-tech'],background:'clay',sizeVariant:'standard',
   },
@@ -206,7 +206,7 @@ export const serviceCategories: ServiceCategory[] = [
 
 export const catalogCards: DisplayCard[] = serviceCategories.map(category => ({
   id:`category-${category.id}`,title:category.cardTitle,subtitle:category.tagline,
-  category:'Service network',description:`${category.title}. ${category.description} ${category.offerings.map(item => item.title).join('. ')}`,
+  category:'Services',description:`${category.title}. ${category.description} ${category.offerings.map(item => item.title).join('. ')}`,
   background:category.background,sizeVariant:category.sizeVariant,kind:'Service direction',
   image:category.image,imageAlt:category.imageAlt,imageNote:category.image ? conceptImageNote : undefined,
   textPosition:'bottom-left',link:`/services/${category.id}/`,
