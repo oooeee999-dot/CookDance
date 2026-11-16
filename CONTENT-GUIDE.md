@@ -10,6 +10,8 @@
 
 文章页的标题、描述、日期、标签、图片、配图性质说明及卡片比例来自文件顶部的 frontmatter。可选 `enquiryService` 对应现有服务目录的分类 ID，`enquiryLabel` 设置文章底部的联系按钮文字。修改后仍需检查并提交、推送，Cloudflare 才会更新；这不是已经接通的可视化发布后台。
 
+竖版作品可填写实际 `imageWidth` 和 `imageHeight`，阅读页会完整保留竖图比例。首页卡片比例仍由 `sizeVariant` 独立控制。同一天连续发布时，可在 `publishedDate` 写入含时区的时间，最新文章会排在前面。
+
 主要编辑 `src/data/creative.ts`，品牌在 `brand`，三项主要服务在 `services`，展示卡片在 `creativeCards`。
 
 新增卡片只需往数组加入一个对象。文件中的 TypeScript 类型会检查必填内容。修改后本地预览，再运行 `npm test`、`npm run check`、`npm run build`。

@@ -29,6 +29,8 @@ const journal = defineCollection({
     image: z.string(),
     imageAlt: z.string(),
     imageNote: z.string(),
+    imageWidth: z.number().int().positive().default(1536),
+    imageHeight: z.number().int().positive().default(1024),
     cardTitle: z.string().optional(),
     cardSubtitle: z.string().optional(),
     enquiryService: z.string().optional(),

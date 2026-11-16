@@ -41,6 +41,8 @@ We want to keep that place open.
 
 CookDance now welcomes enquiries for hand-drawn illustration projects.
 
+For a gift with a personal story behind it, explore our [wedding and anniversary keepsake illustrations](/journal/personalized-wedding-keepsake-illustrations/).
+
 You might have a story to tell, a product that needs its own visual character, an editorial page, a piece of packaging, or a personal gift with a particular memory behind it. We would love to hear what you want the image to express.
 
 Bring references if you have them. Tell us which details matter and where the illustration will live. A quiet pencil drawing, a loose ink line, and a colorful painted scene each ask for a different approach. We can work through the style, materials, composition, and delivery format together.

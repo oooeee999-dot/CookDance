@@ -28,6 +28,7 @@ export const serviceCategories: ServiceCategory[] = [
       {title:'Brand identity',description:'Logo exploration, typography, color, and a practical set of brand assets shaped around your audience.'},
       {title:'Packaging & product concepts',description:'Packaging layouts, mockups, and product-design concepts, with dimensions and production requirements discussed upfront.'},
       {title:'Illustration, digital & 3D assets',description:'Hand-drawn illustration, campaign graphics, ecommerce visuals, and 3D assets shaped around the project. Technique, formats, and usage rights are agreed together.'},
+      {title:'Wedding & anniversary keepsakes',description:'Personalized couple portraits and illustrated story maps featuring meaningful places, pets, and milestones. Drawing technique, digital files, physical originals, and any printing or framing are agreed before work begins.'},
     ],
     brief:['Brand background and audience','References and existing brand files','Dimensions, formats, and intended uses','Launch date and revision expectations'],
     scopeNote:'Concept design, production-ready artwork, and manufacturing support are different scopes. We confirm what the project includes, along with source-file handover and usage rights.',
