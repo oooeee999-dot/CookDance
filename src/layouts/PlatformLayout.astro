@@ -7,13 +7,15 @@ import { demoHref } from '../demo/content';
 import { withBase } from '../lib/urls';
 import SiteFooter from '../components/SiteFooter.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-interface Props { title?: string; description?: string; image?: string; studio?: boolean; wall?: boolean; }
-const { title = brand.slogan, description = `${brand.introduction} ${brand.description}`, image = '/images/platform/citrus.webp', studio = false, wall = false } = Astro.props;
+import { publishedJournal, journalCard } from '../lib/journal';
+interface Props { title?: string; description?: string; image?: string; studio?: boolean; wall?: boolean; ogType?: 'website' | 'article'; publishedTime?: string; }
+const { title = brand.slogan, description = `${brand.introduction} ${brand.description}`, image = '/images/platform/citrus.webp', studio = false, wall = false, ogType = 'website', publishedTime } = Astro.props;
 const legacy = /\/(preview|read|learn|recipes|taste-lab|kitchen|stories|articles|studio)(\/|$)/.test(Astro.url.pathname);
 const noindex = studio || legacy;
 const navigation = [{label:'Home',href:'/'},{label:'Services',href:'/#services'},{label:'Work',href:'/work/'},{label:'About',href:'/about/'},{label:'Contact',href:'/contact/'}];
 const canonical = new URL(Astro.url.pathname.replace('/preview/', '/'), Astro.site);
 const pageTitle = title.includes('CookDance') ? title : `${title} — CookDance`;
+const journalCards = studio || legacy ? [] : (await publishedJournal()).map(journalCard);
 ---
 <!doctype html>
 <html lang={studio ? 'zh-CN' : 'en'}>
@@ -23,7 +25,8 @@ const pageTitle = title.includes('CookDance') ? title : `${title} — CookDance`
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -45,6 +48,7 @@ const pageTitle = title.includes('CookDance') ? title : `${title} — CookDance`
     <main id="main"><slot /></main>
     {!studio && <SiteFooter />}
     <div class="p-toast" role="status" aria-live="polite" hidden></div>
+    <script id="journal-card-data" type="application/json" set:html={JSON.stringify(journalCards).replace(/</g, '\\u003c')} />
     <script>
       if (document.body.dataset.experience === 'food') import('../demo/platform');
       else if (document.body.dataset.experience === 'creative') import('../scripts/creative');

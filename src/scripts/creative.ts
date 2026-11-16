@@ -1,10 +1,15 @@
-import { creativeCards, cardDestination, brand, services, briefText, briefMailto, type ProjectBrief } from '../data/creative';
+import { creativeCards, cardDestination, brand, services, briefText, briefMailto, type ProjectBrief, type DisplayCard } from '../data/creative';
 import { catalogCards, serviceCategories } from '../data/service-catalog';
 import { layoutWall } from '../lib/masonry';
 import { withBase } from '../lib/urls';
 const $ = <T extends HTMLElement = HTMLElement>(selector: string) => document.querySelector<T>(selector);
 const savedKey = 'cookdance-creative-saved-v1';
-const knownIds = new Set(creativeCards.map(card => card.id));
+function journalFromPage(): DisplayCard[] {
+  try { return JSON.parse(document.querySelector('#journal-card-data')?.textContent ?? '[]'); }
+  catch { return []; }
+}
+const allCards = [...journalFromPage(), ...creativeCards];
+const knownIds = new Set(allCards.map(card => card.id));
 function readSaved(): string[] {
   try { const value: unknown = JSON.parse(localStorage.getItem(savedKey) ?? '[]'); return Array.isArray(value) ? [...new Set(value.filter((id): id is string => typeof id === 'string' && knownIds.has(id)))].slice(0,100) : []; } catch { return []; }
 }
@@ -15,7 +20,7 @@ const wall = $('[data-creative-grid]');
 function syncSaved() {
   document.querySelectorAll<HTMLButtonElement>('[data-creative-save]').forEach(button => {
     const active = saved.includes(button.dataset.creativeSave ?? ''); button.setAttribute('aria-pressed',String(active));
-    const card = creativeCards.find(item => item.id === button.dataset.creativeSave);
+    const card = allCards.find(item => item.id === button.dataset.creativeSave);
     button.setAttribute('aria-label',`${active ? 'Unsave' : 'Save'} ${card?.title.replace(/\n/g,' ') ?? 'idea'}`);
   });
   document.querySelectorAll('[data-saved-count]').forEach(node => { node.textContent = String(saved.length); });
@@ -58,7 +63,7 @@ const results = $('[data-search-results]');
 function renderSearch() {
   if (!search || !results) return;
   const query = search.value.trim().toLocaleLowerCase();
-  const matches = [...creativeCards,...catalogCards].filter(card => `${card.title} ${card.subtitle ?? ''} ${card.category} ${card.description}`.replace(/\s+/g,' ').toLocaleLowerCase().includes(query));
+  const matches = [...allCards,...catalogCards].filter(card => `${card.title} ${card.subtitle ?? ''} ${card.category} ${card.description}`.replace(/\s+/g,' ').toLocaleLowerCase().includes(query));
   results.replaceChildren();
   for (const card of matches) {
     const link = document.createElement('a'); link.className = 'c-search-result'; const destination = cardDestination(card); link.href = destination.startsWith('/') ? withBase(destination) : destination;

@@ -3,9 +3,11 @@ import PlatformLayout from '../layouts/PlatformLayout.astro';
 import PlatformPin from '../components/PlatformPin.astro';
 import ServiceCatalog from '../components/ServiceCatalog.astro';
 import PortraitBanner from '../components/PortraitBanner.astro';
+import { publishedJournal, journalCard } from '../lib/journal';
 import { brand, creativeCards, services } from '../data/creative';
 import { withBase } from '../lib/urls';
 import { ArrowUpRight, ArrowLeft, Bookmark } from '@lucide/astro';
+const wallCards = [...(await publishedJournal()).map(journalCard), ...creativeCards];
 ---
 <PlatformLayout wall>
   <section class="c-intro c-wide" aria-labelledby="intro-title">
@@ -13,11 +15,11 @@ import { ArrowUpRight, ArrowLeft, Bookmark } from '@lucide/astro';
     <div class="c-intro-actions"><a class="c-link" href="#services">Explore Services <ArrowUpRight size={15} /></a><a class="c-button" href={withBase('/contact/')}>Start a Project <ArrowUpRight size={16} /></a></div>
   </section>
   <section class="p-wall-wrap c-work-wall" id="work" aria-label="Creative directions and visual studies">
-    <div class="c-wall-caption"><span>SERVICE DIRECTIONS & VISUAL STUDIES</span><span>Ideas to explore together.</span></div>
+    <div class="c-wall-caption"><span>IDEAS, STORIES & SERVICE DIRECTIONS</span><span>Ideas to explore together.</span></div>
     <div class="p-collection-state" data-creative-collection hidden><a class="p-icon" href={withBase('/#work')} aria-label="Back to all creative ideas"><ArrowLeft size={22} /></a><h2>Saved for a little later.</h2></div>
-    <div class="p-photo-wall" data-creative-grid>{creativeCards.map((card,index) => <PlatformPin card={card} index={index} />)}</div>
+    <div class="p-photo-wall" data-creative-grid>{wallCards.map((card,index) => <PlatformPin card={card} index={index} />)}</div>
     <div class="p-empty" data-creative-empty hidden><Bookmark size={28} stroke-width={1.2} /><h2>Keep an idea for later.</h2><p>Save a creative direction to come back to it.<br />Your collection stays in this browser.</p><a href={withBase('/#work')}>Explore all ideas</a></div>
-    <p class="c-disclosure">These cards introduce our service directions and in-house visual studies. They are not completed client projects.</p>
+    <p class="c-disclosure">Journal notes, service directions, and visual studies from CookDance. Concept images are labeled; they are not completed client projects.</p>
   </section>
   <section class="c-section p-container" id="services" aria-labelledby="services-title">
     <div class="c-section-heading"><span class="p-eyebrow">WHAT WE CREATE</span><h2 id="services-title">A clear idea.<br /><em>Room to make it real.</em></h2><p>Three ways to begin. Each project starts with its own conversation.</p></div>

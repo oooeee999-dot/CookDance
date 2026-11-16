@@ -1,0 +1,11 @@
+---
+import PlatformLayout from '../../layouts/PlatformLayout.astro';
+import PlatformPin from '../../components/PlatformPin.astro';
+import { publishedJournal, journalCard } from '../../lib/journal';
+import '../../styles/journal.css';
+const entries = await publishedJournal();
+---
+<PlatformLayout title="Journal" description="Notes on creativity, craft, and the ideas behind CookDance. Read our latest stories and service updates.">
+  <header class="c-page-heading p-container"><span class="p-eyebrow">THE COOKDANCE JOURNAL</span><h1>Room for ideas.<br /><em>And the people behind them.</em></h1><p>Notes on creativity, craft, and the work we would love to make with you.</p></header>
+  <section class="j-index p-container" aria-label="Latest journal notes"><div class="j-related-grid">{entries.map(entry => <PlatformPin card={journalCard(entry)} />)}</div>{entries.length === 0 && <p>More notes are on the way.</p>}</section>
+</PlatformLayout>

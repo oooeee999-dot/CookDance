@@ -11,6 +11,7 @@ Cook = Capability（能力），Dance = Vitality（生命力）。当前方向�
 | 看正式首页 | https://cookdance.com/ |
 | 查看创意方向 | https://cookdance.com/work/ |
 | 查看新增的 13 类服务目录 | https://cookdance.com/services/ |
+| 阅读最新文章 | https://cookdance.com/journal/ |
 | 准备询盘 | https://cookdance.com/contact/ |
 | 改品牌、服务与卡片 | `src/data/creative.ts` |
 | 学习内容配置 | [CONTENT-GUIDE.md](CONTENT-GUIDE.md) |

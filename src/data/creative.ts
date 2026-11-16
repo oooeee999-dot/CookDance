@@ -59,7 +59,7 @@ export interface CreativeCard {
   textPosition?: 'bottom-left' | 'top-left' | 'center' | 'bottom-right';
   typeStyle?: 'serif' | 'sans';
   sizeVariant: keyof typeof sizeRatios;
-  kind: 'Service direction' | 'Visual study' | 'Future exploration';
+  kind: 'Service direction' | 'Visual study' | 'Future exploration' | 'Journal';
 }
 const studyNote = 'AI-generated still-image study from the original CookDance illustration library. This is not a commissioned campaign, a finished video, or evidence of client work.';
 export type DisplayCard = Omit<CreativeCard, 'service'>;

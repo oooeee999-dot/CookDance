@@ -6,6 +6,10 @@
 
 ## 日常入口
 
+2026-11-16 新增 Journal 文章：在 `src/content/journal/` 中新增 Markdown 文件，正文与封面信息写在同一份文件里。已发布文章会按日期自动出现在首页和 Work 图片墙前方，并进入全站搜索与收藏；文章列表位于 `/journal/`。例如 `a-place-for-the-human-hand.md`。`draft: true` 的文章不会生成公开页面或进入这些入口。
+
+文章页的标题、描述、日期、标签、图片、配图性质说明及卡片比例来自文件顶部的 frontmatter。可选 `enquiryService` 对应现有服务目录的分类 ID，`enquiryLabel` 设置文章底部的联系按钮文字。修改后仍需检查并提交、推送，Cloudflare 才会更新；这不是已经接通的可视化发布后台。
+
 主要编辑 `src/data/creative.ts`，品牌在 `brand`，三项主要服务在 `services`，展示卡片在 `creativeCards`。
 
 新增卡片只需往数组加入一个对象。文件中的 TypeScript 类型会检查必填内容。修改后本地预览，再运行 `npm test`、`npm run check`、`npm run build`。

@@ -18,4 +18,25 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+const journal = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/journal' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishedDate: z.coerce.date(),
+    category: z.string(),
+    tags: z.array(z.string()).default([]),
+    image: z.string(),
+    imageAlt: z.string(),
+    imageNote: z.string(),
+    cardTitle: z.string().optional(),
+    cardSubtitle: z.string().optional(),
+    enquiryService: z.string().optional(),
+    enquiryLabel: z.string().default('Discuss your project'),
+    sizeVariant: z.enum(['tall', 'portrait', 'standard', 'square', 'editorial', 'landscape']).default('standard'),
+    background: z.enum(['olive', 'paper', 'clay', 'sage', 'ink']).default('paper'),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { articles, journal };

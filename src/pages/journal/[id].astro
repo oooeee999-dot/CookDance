@@ -1,0 +1,43 @@
+---
+import PlatformLayout from '../../layouts/PlatformLayout.astro';
+import PlatformPin from '../../components/PlatformPin.astro';
+import { publishedJournal } from '../../lib/journal';
+import { creativeCards } from '../../data/creative';
+import { serviceCategories } from '../../data/service-catalog';
+import { withBase } from '../../lib/urls';
+import { render } from 'astro:content';
+import { ArrowUpRight } from '@lucide/astro';
+import '../../styles/journal.css';
+
+export async function getStaticPaths() {
+  return (await publishedJournal()).map(article => ({ params: { id: article.id }, props: { article } }));
+}
+const { article } = Astro.props;
+const { Content } = await render(article);
+const date = article.data.publishedDate;
+const dateLabel = date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const minutes = Math.max(1, Math.ceil((article.body?.split(/\s+/).length ?? 0) / 220));
+const related = creativeCards.filter(card => ['brand-visuals', 'art-direction', 'digital-design'].includes(card.id));
+const enquiryCategory = serviceCategories.find(category => category.id === article.data.enquiryService);
+const enquiryHref = enquiryCategory ? `/contact/?service=${encodeURIComponent(enquiryCategory.id)}` : '/contact/';
+const schema = {
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: article.data.title,
+  description: article.data.description, datePublished: date.toISOString(),
+  image: new URL(withBase(article.data.image), Astro.site).href,
+  mainEntityOfPage: new URL(withBase(`/journal/${article.id}/`), Astro.site).href,
+  author: { '@type': 'Organization', name: 'CookDance', url: Astro.site?.href },
+  publisher: { '@type': 'Organization', name: 'CookDance', url: Astro.site?.href },
+};
+---
+<PlatformLayout title={article.data.title} description={article.data.description} image={article.data.image} ogType="article" publishedTime={date.toISOString()}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
+  <article class="j-article">
+    <header class="j-header p-container">
+      <nav class="j-breadcrumbs" aria-label="Breadcrumb"><a href={withBase('/')}>Home</a><span>/</span><a href={withBase('/journal/')}>Journal</a><span>/</span><span>{article.data.category}</span></nav>
+      <div class="j-title"><span class="p-eyebrow">COOKDANCE JOURNAL / {article.data.category.toUpperCase()}</span><h1>{article.data.title}</h1><p>{article.data.description}</p><div class="j-byline"><span>By CookDance</span><time datetime={date.toISOString().slice(0,10)}>{dateLabel}</time><span>{minutes} min read</span></div></div>
+    </header>
+    <figure class="j-hero p-container"><img src={withBase(article.data.image)} alt={article.data.imageAlt} width="1536" height="1024" fetchpriority="high" /><figcaption>{article.data.imageNote}</figcaption></figure>
+    <div class="j-body p-container"><aside class="j-aside"><span class="p-eyebrow">IN THIS NOTE</span><p>{article.data.category}</p><ul aria-label="Article topics">{article.data.tags.map(tag => <li>{tag}</li>)}</ul>{enquiryCategory && <a class="c-link" href={withBase(`/services/${enquiryCategory.id}/`)}>{enquiryCategory.title} <ArrowUpRight size={14} /></a>}</aside><div><div class="j-prose"><Content /></div><section class="j-invite" aria-labelledby="journal-invite-title"><span class="p-eyebrow">YOUR NEXT IDEA</span><h2 id="journal-invite-title">Something worth<br /><em>making together.</em></h2><p>Tell us what you have in mind. We’ll work through the details with you.</p><a class="c-button" href={withBase(enquiryHref)}>{article.data.enquiryLabel} <ArrowUpRight size={16} /></a></section></div></div>
+  </article>
+  <section class="j-related p-container"><div class="c-section-heading"><span class="p-eyebrow">KEEP EXPLORING</span><h2>Ideas to make your own.</h2></div><div class="j-related-grid">{related.map(card => <PlatformPin card={card} />)}</div><a class="c-link j-journal-link" href={withBase('/journal/')}>All journal notes <ArrowUpRight size={15} /></a></section>
+</PlatformLayout>
