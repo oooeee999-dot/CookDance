@@ -12,6 +12,8 @@
 
 竖版作品可填写实际 `imageWidth` 和 `imageHeight`，阅读页会完整保留竖图比例。首页卡片比例仍由 `sizeVariant` 独立控制。同一天连续发布时，可在 `publishedDate` 写入含时区的时间，最新文章会排在前面。
 
+需要在阅读页保留整张横版地图、截图等素材时，增加 `imageFit: contain`，图片会按实际宽高完整显示。省略此字段沿用原有封面样式；首页卡片仍按 `sizeVariant` 裁切预览。
+
 主要编辑 `src/data/creative.ts`，品牌在 `brand`，三项主要服务在 `services`，展示卡片在 `creativeCards`。
 
 新增卡片只需往数组加入一个对象。文件中的 TypeScript 类型会检查必填内容。修改后本地预览，再运行 `npm test`、`npm run check`、`npm run build`。

@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-19",
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "useCase": "precise-object-edit",
+  "input": "Owner-supplied game event video screenshot: codex-clipboard-b7e9982f-38df-4308-8f78-645376a4dd50.png",
+  "generatedSource": "exec-145f83d2-c52a-430e-b997-ba035a399e2f.png",
+  "websiteAsset": "public/images/journal/game-map-event-film.webp",
+  "prompt": "Use case: precise-object-edit\nAsset type: widescreen cover for a CookDance project note about an existing game-map event introduction video.\nInput: the attached image is the edit target, a screenshot of the owner's video, not a loose mood reference.\nPrimary request: clean and refine the exact supplied still. Remove only the video player interface at the bottom (play button, timeline, time counters, speed control and speaker icon), reconstructing the obscured parchment, compass, border and table seamlessly. Improve fine detail and remove compression softness gently. Keep the existing cinematic warm amber lighting and aged parchment material.\nInvariants: preserve the same map geography, coastlines, mountain ranges, forests, lakes, rivers, glowing golden branching routes, engraved compass roses, double border, perspective, paired rolled scroll edges and dark wooden tabletop. Do not redesign the world, change routes or invent readable place names. Do not add landmarks, characters, markers, weapons, labels, logos or title text. Golden routes must remain delicate integrated lines, not oversized neon effects.\nComposition: retain the original landscape approximately 16:9 framing and full scroll; preserve the map's visible edges. A restrained cinematic fantasy game cartography still, crisp at website size but not a plastic 3D remake. No new text or graphics. This is a still-image cleanup, not a video generation request."
+}

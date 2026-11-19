@@ -31,6 +31,7 @@ const journal = defineCollection({
     imageNote: z.string(),
     imageWidth: z.number().int().positive().default(1536),
     imageHeight: z.number().int().positive().default(1024),
+    imageFit: z.enum(['cover', 'contain']).default('cover'),
     cardTitle: z.string().optional(),
     cardSubtitle: z.string().optional(),
     enquiryService: z.string().optional(),
